@@ -14,6 +14,13 @@ import java.util.List;
  */
 public class Patient {
     
+    enum State {
+        ACTIVO,
+        ALTA,
+        ABANDONO,
+        DERIVACION
+    }
+    
     private int patientId;
     private String name;
     private String lastName;
@@ -28,15 +35,36 @@ public class Patient {
     private String email;
     private String social;
     private String derivedFrom;
-    private String initialObservations;
+    private String derivedTo;
+    private String observations;
     
     private List<Session> sessions;
     private Relative mainRelative;
+    
+    private boolean isCurrentPatient;
+    private State state;
 
     public Patient() {
+        this.isCurrentPatient = true;
+        this.state = State.ACTIVO;
     }
 
-    public Patient(int patientId, String name, String lastName, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email, String social, String derivedFrom, String initialObservations, List<Session> sessions) {
+    public Patient(int patientId, 
+            String name, 
+            String lastName, 
+            Date birthday, 
+            String gender, 
+            String avatar, 
+            String address, 
+            String city, 
+            String country, 
+            String phone1, 
+            String phone2, 
+            String email, 
+            String social, 
+            String derivedFrom, 
+            String initialObservations, 
+            List<Session> sessions) {
         this.patientId = patientId;
         this.name = name;
         this.lastName = lastName;
@@ -51,8 +79,10 @@ public class Patient {
         this.email = email;
         this.social = social;
         this.derivedFrom = derivedFrom;
-        this.initialObservations = initialObservations;
+        this.observations = initialObservations;
         this.sessions = sessions;
+        this.isCurrentPatient = true;
+        this.state = State.ACTIVO;
     }
 
     public int getPatientId() {
@@ -110,9 +140,21 @@ public class Patient {
     public String getDerivedFrom() {
         return derivedFrom;
     }
+    
+    public String getDerivedTo() {
+        return derivedTo;
+    }
 
     public String getInitialObservations() {
-        return initialObservations;
+        return observations;
+    }
+
+    public boolean isIsCurrentPatient() {
+        return isCurrentPatient;
+    }
+
+    public State getState() {
+        return state;
     }
 
     public List<Session> getSessions() {
@@ -178,9 +220,13 @@ public class Patient {
     public void setDerivedFrom(String derivedFrom) {
         this.derivedFrom = derivedFrom;
     }
+    
+    public void setDerivedTo(String derivedTo) {
+        this.derivedTo = derivedTo;
+    }
 
     public void setInitialObservations(String initialObservations) {
-        this.initialObservations = initialObservations;
+        this.observations = initialObservations;
     }
 
     public void setSessions(List<Session> sessions) {
@@ -190,8 +236,12 @@ public class Patient {
     public void setMainRelative(Relative mainRelative) {
         this.mainRelative = mainRelative;
     }
-    
-    
-    
-    
+
+    public void setIsCurrentPatient(boolean isCurrentPatient) {
+        this.isCurrentPatient = isCurrentPatient;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
 }

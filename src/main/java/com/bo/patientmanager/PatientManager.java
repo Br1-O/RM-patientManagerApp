@@ -5,6 +5,8 @@
 package com.bo.patientmanager;
 
 import com.bo.patientmanager.gui.MainWindow;
+import jakarta.persistence.EntityManager;
+import persistence.JPAUtil;
 
 /**
  *
@@ -18,5 +20,9 @@ public class PatientManager {
         MainWindow mainWindow = new MainWindow();
         mainWindow.setVisible(true);
         mainWindow.setLocationRelativeTo(null);
+        
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+
+        em.close();
     }
 }
