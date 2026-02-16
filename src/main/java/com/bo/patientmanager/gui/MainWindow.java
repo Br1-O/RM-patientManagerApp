@@ -15,6 +15,7 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        menuBg.setOpaque(false);
     }
 
     /**
@@ -26,27 +27,36 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        mainBg = new javax.swing.JPanel();
+        title = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        menuBg = new javax.swing.JPanel();
         btnSearchClinicHistory = new javax.swing.JButton();
         btnGetAllPatients = new javax.swing.JButton();
         btnSearchPatient = new javax.swing.JButton();
         btnLoadNewPatient = new javax.swing.JButton();
         btnLoadNewClinicHistory = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(232, 216, 255));
+        mainBg.setBackground(new java.awt.Color(232, 216, 255));
+        mainBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setBackground(new java.awt.Color(61, 25, 119));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(61, 25, 119));
-        jLabel3.setText("RM - Historias Clinicas");
+        title.setBackground(new java.awt.Color(61, 25, 119));
+        title.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setText("Historias Clinicas");
+        mainBg.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(232, 216, 255));
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Desktop\\Projects\\BringOnline\\Ro\\patientManager\\src\\main\\resources\\public\\icons\\logo2.png")); // NOI18N
+        mainBg.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, 350));
+
+        menuBg.setBackground(new java.awt.Color(232, 216, 255));
+        menuBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSearchClinicHistory.setBackground(new java.awt.Color(61, 25, 119));
         btnSearchClinicHistory.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -58,6 +68,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnSearchClinicHistoryActionPerformed(evt);
             }
         });
+        menuBg.add(btnSearchClinicHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 175, 286, 56));
 
         btnGetAllPatients.setBackground(new java.awt.Color(61, 25, 119));
         btnGetAllPatients.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -69,6 +80,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnGetAllPatientsActionPerformed(evt);
             }
         });
+        menuBg.add(btnGetAllPatients, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 27, 286, 56));
 
         btnSearchPatient.setBackground(new java.awt.Color(61, 25, 119));
         btnSearchPatient.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -80,6 +92,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnSearchPatientActionPerformed(evt);
             }
         });
+        menuBg.add(btnSearchPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 101, 286, 56));
 
         btnLoadNewPatient.setBackground(new java.awt.Color(61, 25, 119));
         btnLoadNewPatient.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -91,6 +104,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnLoadNewPatientActionPerformed(evt);
             }
         });
+        menuBg.add(btnLoadNewPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 249, 286, 56));
 
         btnLoadNewClinicHistory.setBackground(new java.awt.Color(61, 25, 119));
         btnLoadNewClinicHistory.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -102,6 +116,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnLoadNewClinicHistoryActionPerformed(evt);
             }
         });
+        menuBg.add(btnLoadNewClinicHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 323, 286, 56));
 
         btnExit.setBackground(new java.awt.Color(61, 25, 119));
         btnExit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -113,80 +128,25 @@ public class MainWindow extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
+        menuBg.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 397, 286, 56));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Desktop\\Projects\\BringOnline\\Ro\\patientManager\\src\\main\\resources\\public\\icons\\logo (2).png")); // NOI18N
+        mainBg.add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 350, 470));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLoadNewClinicHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLoadNewPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchClinicHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGetAllPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(btnGetAllPatients, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearchPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnSearchClinicHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnLoadNewPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnLoadNewClinicHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Downloads\\33114809_rm251-mind-15-e2.jpg")); // NOI18N
+        mainBg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, 600));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(108, 108, 108))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Downloads\\33114809_rm251-mind-15-e3.jpg")); // NOI18N
+        mainBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainBg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainBg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -229,8 +189,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchClinicHistory;
     private javax.swing.JButton btnSearchPatient;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel logo;
+    private javax.swing.JPanel mainBg;
+    private javax.swing.JPanel menuBg;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

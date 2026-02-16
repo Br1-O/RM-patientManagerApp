@@ -38,7 +38,7 @@ public class LoadPatient extends javax.swing.JFrame {
     private void initComponents() {
 
         softBevelBorder1 = new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED);
-        jPanel1 = new javax.swing.JPanel();
+        bg = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -91,17 +91,21 @@ public class LoadPatient extends javax.swing.JFrame {
         txtPatientInitialObservations = new javax.swing.JTextArea();
         btnSaveNewPatientForm = new javax.swing.JButton();
         btnClearPatientForm = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(232, 216, 255));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setPreferredSize(new java.awt.Dimension(863, 657));
+        bg.setBackground(new java.awt.Color(232, 216, 255));
+        bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        bg.setPreferredSize(new java.awt.Dimension(863, 657));
+        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setBackground(new java.awt.Color(61, 25, 119));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(61, 25, 119));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cargar nuevo paciente");
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(61, 25, 119));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -135,7 +139,7 @@ public class LoadPatient extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Género");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 3, 28)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Datos personales");
 
@@ -256,6 +260,8 @@ public class LoadPatient extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 332, -1));
+
         jPanel3.setBackground(new java.awt.Color(61, 25, 119));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -271,7 +277,7 @@ public class LoadPatient extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Email");
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 3, 28)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Datos de contacto");
 
@@ -352,6 +358,8 @@ public class LoadPatient extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        bg.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, -1, -1));
+
         jPanel4.setBackground(new java.awt.Color(61, 25, 119));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -367,7 +375,7 @@ public class LoadPatient extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Horario");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 3, 28)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Datos de sesión");
 
@@ -507,11 +515,13 @@ public class LoadPatient extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        bg.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+
         jPanel6.setBackground(new java.awt.Color(61, 25, 119));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel26.setBackground(new java.awt.Color(61, 25, 119));
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 3, 28)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Obs. Iniciales");
 
@@ -540,6 +550,8 @@ public class LoadPatient extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        bg.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 302, -1));
+
         btnSaveNewPatientForm.setBackground(new java.awt.Color(61, 25, 119));
         btnSaveNewPatientForm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnSaveNewPatientForm.setForeground(new java.awt.Color(255, 255, 255));
@@ -550,6 +562,7 @@ public class LoadPatient extends javax.swing.JFrame {
                 btnSaveNewPatientFormActionPerformed(evt);
             }
         });
+        bg.add(btnSaveNewPatientForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 700, 140, 56));
 
         btnClearPatientForm.setBackground(new java.awt.Color(61, 25, 119));
         btnClearPatientForm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -561,65 +574,20 @@ public class LoadPatient extends javax.swing.JFrame {
                 btnClearPatientFormActionPerformed(evt);
             }
         });
+        bg.add(btnClearPatientForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 700, 140, 56));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(btnClearPatientForm, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSaveNewPatientForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jLabel3)))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel3)
-                .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnClearPatientForm, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSaveNewPatientForm, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Downloads\\33114809_rm251-mind-15-e.jpg")); // NOI18N
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 790));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
         );
 
         pack();
@@ -719,6 +687,7 @@ public class LoadPatient extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel bg;
     private javax.swing.JButton btnClearPatientForm;
     private javax.swing.JButton btnSaveNewPatientForm;
     private javax.swing.JComboBox<String> cmbPatientCountry;
@@ -733,6 +702,7 @@ public class LoadPatient extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbPatientSessionMode1;
     private javax.swing.JComboBox<String> cmbPatientSessionMode2;
     private javax.swing.JComboBox<String> cmbPatientSessionMode3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -754,7 +724,6 @@ public class LoadPatient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
