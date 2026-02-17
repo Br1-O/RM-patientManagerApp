@@ -41,8 +41,7 @@ public class ClinicalHistory {
     public ClinicalHistory() {
     }
 
-    public ClinicalHistory(Long clinicHistoryId, String clinicHistoryCode, Date sessionDate, String content, String observation, String conclusion, List<String> keyWords, List<ClinicalHistoryFile> files, String psychologistName) {
-        this.clinicHistoryId = clinicHistoryId;
+    public ClinicalHistory(String clinicHistoryCode, Date sessionDate, String content, String observation, String conclusion, List<String> keyWords, List<ClinicalHistoryFile> files, String psychologistName) {
         this.clinicHistoryCode = clinicHistoryCode;
         this.sessionDate = sessionDate;
         this.content = content;

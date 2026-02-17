@@ -48,12 +48,6 @@ public class Patient {
     @Column(length = 4000)
     private String observations;
     
-    @OneToMany(mappedBy = "patient")
-    private List<Session> sessions;
-    
-    @OneToMany(mappedBy = "patient")
-    private List<Relative> relatives;
-    
     private boolean isCurrentPatient;
     private State state;
 
@@ -62,7 +56,7 @@ public class Patient {
         this.state = State.ACTIVO;
     }
 
-    public Patient(Long patientId, 
+    public Patient(
             String name, 
             String lastName, 
             Date birthday, 
@@ -76,9 +70,7 @@ public class Patient {
             String email, 
             String social, 
             String derivedFrom, 
-            String initialObservations, 
-            List<Session> sessions) {
-        this.patientId = patientId;
+            String initialObservations) {
         this.name = name;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -93,7 +85,6 @@ public class Patient {
         this.social = social;
         this.derivedFrom = derivedFrom;
         this.observations = initialObservations;
-        this.sessions = sessions;
         this.isCurrentPatient = true;
         this.state = State.ACTIVO;
     }
@@ -170,14 +161,6 @@ public class Patient {
         return state;
     }
 
-    public List<Session> getSessions() {
-        return sessions;
-    }
-    
-    public List<Relative> getRelatives() {
-        return relatives;
-    }
-
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
@@ -240,14 +223,6 @@ public class Patient {
 
     public void setInitialObservations(String initialObservations) {
         this.observations = initialObservations;
-    }
-
-    public void setSessions(List<Session> sessions) {
-        this.sessions = sessions;
-    }
-
-    public void setRelatives(List<Relative> relatives) {
-        this.relatives = relatives;
     }
 
     public void setIsCurrentPatient(boolean isCurrentPatient) {

@@ -48,8 +48,7 @@ public class Relative {
     public Relative() {
     }
 
-    public Relative(Long relativeId, Patient patient, String name, String lastName, String relation, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email, List<RelativeObservation> observations) {
-        this.relativeId = relativeId;
+    public Relative(Patient patient, String name, String lastName, String relation, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email, List<RelativeObservation> observations) {
         this.patient = patient;
         this.name = name;
         this.lastName = lastName;

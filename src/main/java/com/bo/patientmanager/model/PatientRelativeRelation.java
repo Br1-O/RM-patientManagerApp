@@ -31,7 +31,7 @@ public class PatientRelativeRelation {
 
     private String relation;
 
-    @OneToMany(mappedBy = "patientRelative")
+    @OneToMany(mappedBy = "patientRelativeRelation")
     private List<RelativeObservation> observations;
     
     private boolean isMainContact;
@@ -39,8 +39,7 @@ public class PatientRelativeRelation {
     public PatientRelativeRelation() {
     }
 
-    public PatientRelativeRelation(Long id, Patient patient, Relative relative, String relation, List<RelativeObservation> observations, boolean isMainContact) {
-        this.id = id;
+    public PatientRelativeRelation(Patient patient, Relative relative, String relation, List<RelativeObservation> observations, boolean isMainContact) {
         this.patient = patient;
         this.relative = relative;
         this.relation = relation;

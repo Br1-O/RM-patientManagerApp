@@ -5,6 +5,7 @@
 package com.bo.patientmanager.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,6 +17,7 @@ import java.util.Date;
  *
  * @author Bring Online
  */
+@Entity
 public class RelativeObservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +34,7 @@ public class RelativeObservation {
     public RelativeObservation() {
     }
 
-    public RelativeObservation(Long relativeObservationId, PatientRelativeRelation patientRelativeRelation, Date date, String content) {
-        this.relativeObservationId = relativeObservationId;
+    public RelativeObservation(PatientRelativeRelation patientRelativeRelation, Date date, String content) {
         this.patientRelativeRelation = patientRelativeRelation;
         this.date = date;
         this.content = content;

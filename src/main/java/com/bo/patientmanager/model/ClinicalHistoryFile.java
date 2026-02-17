@@ -4,6 +4,7 @@
  */
 package com.bo.patientmanager.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,6 +16,7 @@ import java.util.List;
  *
  * @author Bring Online
  */
+@Entity
 public class ClinicalHistoryFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +34,7 @@ public class ClinicalHistoryFile {
     public ClinicalHistoryFile() {
     }
 
-    public ClinicalHistoryFile(Long id, ClinicalHistory clinicalHistory, String path, String fileType, String description, List<String> keyWords) {
-        this.id = id;
+    public ClinicalHistoryFile(ClinicalHistory clinicalHistory, String path, String fileType, String description, List<String> keyWords) {
         this.clinicalHistory = clinicalHistory;
         this.path = path;
         this.fileType = fileType;

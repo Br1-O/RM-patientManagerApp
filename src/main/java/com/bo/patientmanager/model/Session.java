@@ -37,8 +37,7 @@ public class Session {
     public Session() {
     }
 
-    public Session(Long id, Patient patient, DayOfWeek dayOfWeek, LocalTime from, LocalTime to, String mode, String difBillingRate, String currency) {
-        this.id = id;
+    public Session(Patient patient, DayOfWeek dayOfWeek, LocalTime from, LocalTime to, String mode, String difBillingRate, String currency) {
         this.patient = patient;
         this.dayOfWeek = dayOfWeek;
         this.from = from;

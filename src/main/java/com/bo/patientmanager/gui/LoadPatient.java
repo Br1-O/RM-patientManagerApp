@@ -3,9 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.bo.patientmanager.gui;
-import com.toedter.calendar.JCalendar;
+//import com.toedter.calendar.JCalendar;
+import com.bo.patientmanager.model.Patient;
+import com.bo.patientmanager.service.PatientService;
 import com.toedter.calendar.JDateChooser;
+import jakarta.persistence.EntityManagerFactory;
 import java.awt.BorderLayout;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+import java.util.Date;
+import persistence.JPAUtil;
 
 /**
  *
@@ -14,6 +21,9 @@ import java.awt.BorderLayout;
 public class LoadPatient extends javax.swing.JFrame {
     
     private JDateChooser dtPatientBirthday;
+    
+    EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
+    PatientService patientService = new PatientService(emf);
 
     /**
      * Creates new form LoadPatient
@@ -594,7 +604,72 @@ public class LoadPatient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveNewPatientFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveNewPatientFormActionPerformed
-        // TODO add your handling code here:
+        String name = txtPatientName.getText();
+        String lastName = txtPatientLastName.getText();
+        String address = txtPatientAddress.getText();
+        String city = txtPatientCity.getText();
+        String phone = txtPatientPhone.getText();
+        String phone2 = txtPatientPhone2.getText();
+        String email = txtPatientEmail.getText();
+        String socials = txtPatientSocials.getText();
+        String difBillingRate = txtPatientDifBillingRate.getText();
+        String derivedFrom = txtPatientDerivedFrom.getText();
+        String initialObservations = txtPatientInitialObservations.getText();
+        Date birthday = dtPatientBirthday.getDate();
+        String gender = (String) cmbPatientGender.getSelectedItem();
+        String country = (String) cmbPatientCountry.getSelectedItem();
+        String currency = (String) cmbPatientCurrency.getSelectedItem();
+        DayOfWeek sessionDay1 = (DayOfWeek) cmbPatientSessionDay1.getSelectedItem();
+        DayOfWeek sessionDay2 = (DayOfWeek) cmbPatientSessionDay2.getSelectedItem();
+        DayOfWeek sessionDay3 = (DayOfWeek) cmbPatientSessionDay3.getSelectedItem();
+        LocalTime sessionHour1 = (LocalTime) cmbPatientSessionHour1.getSelectedItem();
+        LocalTime sessionHour2 = (LocalTime) cmbPatientSessionHour2.getSelectedItem();
+        LocalTime sessionHour3 = (LocalTime) cmbPatientSessionHour3.getSelectedItem();
+        String sessionMode1 = (String) cmbPatientSessionMode1.getSelectedItem();
+        String sessionMode2 = (String) cmbPatientSessionMode2.getSelectedItem();
+        String sessionMode3 = (String) cmbPatientSessionMode3.getSelectedItem();
+        
+
+        /**
+        Patient newPatient = new Patient(name, 
+                lastName, 
+                address, 
+                city, 
+                phone, 
+                phone2, 
+                email, 
+                socials, 
+                difBillingRate, 
+                derivedFrom, 
+                initialObservations, 
+                birthday, 
+                gender, 
+                country, 
+                currency, 
+                sessionDay1, 
+                sessionDay2, 
+                sessionDay3, 
+                sessionHour1, 
+                sessionHour2, 
+                sessionHour3, 
+                sessionMode1, 
+                sessionMode2, 
+                sessionMode3);
+        
+        Session newSession1 = new Session(newPatient,
+                sessionDay1,
+                
+        )
+                
+        this.id = id;
+        this.patient = patient;
+        this.dayOfWeek = dayOfWeek;
+        this.from = from;
+        this.to = to;
+        this.mode = mode;
+        this.difBillingRate = difBillingRate;
+        this.currency = currency;
+        * */
     }//GEN-LAST:event_btnSaveNewPatientFormActionPerformed
 
     private void cmbPatientSessionDay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionDay3ActionPerformed
