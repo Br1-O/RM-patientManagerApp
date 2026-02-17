@@ -20,10 +20,6 @@ public abstract class BaseRepository {
     protected BaseRepository(EntityManagerFactory emf) {
         this.emf = emf;
     }
-
-    public BaseRepository() {
-        this.emf = JPAUtil.getEntityManagerFactory();
-    }
     
     protected EntityManager getEntityManager() {
         return emf.createEntityManager();
