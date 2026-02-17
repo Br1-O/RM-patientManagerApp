@@ -4,6 +4,11 @@
  */
 package com.bo.patientmanager.model;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.util.List;
 
 /**
@@ -11,8 +16,14 @@ import java.util.List;
  * @author Bring Online
  */
 public class ClinicalHistoryFile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int clinicalHistoryId;
+    
+    @ManyToOne
+    @JoinColumn(name= "clinical_history_id", nullable = false)
+    private ClinicalHistory clinicalHistory;
+    
     private String path;
     private String fileType;
     private String description;
@@ -21,9 +32,9 @@ public class ClinicalHistoryFile {
     public ClinicalHistoryFile() {
     }
 
-    public ClinicalHistoryFile(int id, int clinicalHistoryId, String path, String fileType, String description, List<String> keyWords) {
+    public ClinicalHistoryFile(int id, ClinicalHistory clinicalHistory, String path, String fileType, String description, List<String> keyWords) {
         this.id = id;
-        this.clinicalHistoryId = clinicalHistoryId;
+        this.clinicalHistory = clinicalHistory;
         this.path = path;
         this.fileType = fileType;
         this.description = description;
@@ -34,8 +45,8 @@ public class ClinicalHistoryFile {
         return id;
     }
 
-    public int getClinicalHistoryId() {
-        return clinicalHistoryId;
+    public ClinicalHistory getClinicalHistory() {
+        return clinicalHistory;
     }
 
     public String getPath() {
@@ -58,8 +69,8 @@ public class ClinicalHistoryFile {
         this.id = id;
     }
 
-    public void setClinicalHistoryId(int clinicalHistoryId) {
-        this.clinicalHistoryId = clinicalHistoryId;
+    public void setClinicalHistory(ClinicalHistory clinicalHistory) {
+        this.clinicalHistory = clinicalHistory;
     }
 
     public void setPath(String path) {

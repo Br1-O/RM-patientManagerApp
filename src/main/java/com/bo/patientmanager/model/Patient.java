@@ -1,5 +1,11 @@
 package com.bo.patientmanager.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +18,7 @@ import java.util.List;
  *
  * @author Bring Online
  */
+@Entity
 public class Patient {
     
     enum State {
@@ -21,6 +28,8 @@ public class Patient {
         DERIVACION
     }
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int patientId;
     private String name;
     private String lastName;
@@ -36,10 +45,14 @@ public class Patient {
     private String social;
     private String derivedFrom;
     private String derivedTo;
+    @Column(length = 4000)
     private String observations;
     
+    @OneToMany(mappedBy = "patient")
     private List<Session> sessions;
-    private Relative mainRelative;
+    
+    @OneToMany(mappedBy = "patient")
+    private List<Relative> relatives;
     
     private boolean isCurrentPatient;
     private State state;
@@ -161,8 +174,8 @@ public class Patient {
         return sessions;
     }
     
-    public Relative getMainRelative() {
-        return mainRelative;
+    public List<Relative> getRelatives() {
+        return relatives;
     }
 
     public void setPatientId(int patientId) {
@@ -233,8 +246,8 @@ public class Patient {
         this.sessions = sessions;
     }
 
-    public void setMainRelative(Relative mainRelative) {
-        this.mainRelative = mainRelative;
+    public void setRelatives(List<Relative> relatives) {
+        this.relatives = relatives;
     }
 
     public void setIsCurrentPatient(boolean isCurrentPatient) {

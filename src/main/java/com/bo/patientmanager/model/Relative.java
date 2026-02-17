@@ -4,14 +4,31 @@
  */
 package com.bo.patientmanager.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Bring Online
  */
+@Entity
 public class Relative {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int relativeId;
+    
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
+    private Patient patient;
+        
     private String name;
     private String lastName;
     private String relation;
@@ -24,13 +41,16 @@ public class Relative {
     private String phone1;
     private String phone2;
     private String email;
-    private String observations;
+    
+    @OneToMany
+    private List<RelativeObservation> observations;
 
     public Relative() {
     }
 
-    public Relative(int relativeId, String name, String lastName, String relation, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email, String observations) {
+    public Relative(int relativeId, Patient patient, String name, String lastName, String relation, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email, List<RelativeObservation> observations) {
         this.relativeId = relativeId;
+        this.patient = patient;
         this.name = name;
         this.lastName = lastName;
         this.relation = relation;
@@ -48,6 +68,10 @@ public class Relative {
 
     public int getRelativeId() {
         return relativeId;
+    }
+    
+    public Patient patient() {
+        return patient;
     }
 
     public String getName() {
@@ -98,12 +122,16 @@ public class Relative {
         return email;
     }
 
-    public String getObservations() {
+    public List<RelativeObservation> getObservations() {
         return observations;
     }
 
     public void setRelativeId(int relativeId) {
         this.relativeId = relativeId;
+    }
+    
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public void setName(String name) {
@@ -154,7 +182,7 @@ public class Relative {
         this.email = email;
     }
 
-    public void setObservations(String observations) {
+    public void setObservations(List<RelativeObservation> observations) {
         this.observations = observations;
     }
     

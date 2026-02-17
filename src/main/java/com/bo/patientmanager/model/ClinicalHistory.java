@@ -4,6 +4,12 @@
  */
 package com.bo.patientmanager.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 
@@ -11,16 +17,25 @@ import java.util.List;
  *
  * @author Bring Online
  */
+@Entity
 public class ClinicalHistory {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int clinicHistoryId; //main id for db
     private String clinicHistoryCode; //use this one for search by user
     private Date sessionDate;
+    @Column(length = 4000)
     private String content;
+    @Column(length = 4000)
     private String observation;
+    @Column(length = 4000)
     private String conclusion;
     private List<String> keyWords;
+    
+    @OneToMany(mappedBy = "clinicalHistory")
     private List<ClinicalHistoryFile> files;
+    
     private String psychologistName;
 
     public ClinicalHistory() {

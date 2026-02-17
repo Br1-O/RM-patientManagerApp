@@ -31,6 +31,12 @@
             <!-- Logs -->
             <property name="hibernate.show_sql"
                       value="false"/>
+            
+            <!-- Autocommit -->
+            <property name="hibernate.connection.autocommit" value="false"/>
+            
+            <!-- Unicode -->
+            <property name="hibernate.connection.useUnicode" value="true"/>
 
         </properties>
 

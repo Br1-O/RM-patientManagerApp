@@ -4,6 +4,12 @@
  */
 package com.bo.patientmanager.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
@@ -11,9 +17,16 @@ import java.time.LocalTime;
  *
  * @author Bring Online
  */
+@Entity
 public class Session {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int patientId;
+    
+    @ManyToOne
+    @JoinColumn(name = "patient_id", nullable = false)
+    private Patient patient;    
+    
     private DayOfWeek dayOfWeek;
     private LocalTime from;
     private LocalTime to;
@@ -24,9 +37,9 @@ public class Session {
     public Session() {
     }
 
-    public Session(int id, int patientId, DayOfWeek dayOfWeek, LocalTime from, LocalTime to, String mode, String difBillingRate, String currency) {
+    public Session(int id, Patient patient, DayOfWeek dayOfWeek, LocalTime from, LocalTime to, String mode, String difBillingRate, String currency) {
         this.id = id;
-        this.patientId = patientId;
+        this.patient = patient;
         this.dayOfWeek = dayOfWeek;
         this.from = from;
         this.to = to;
@@ -39,8 +52,8 @@ public class Session {
         return id;
     }
 
-    public int getPatientId() {
-        return patientId;
+    public Patient getPatient() {
+        return patient;
     }
 
     public DayOfWeek getDayOfWeek() {
@@ -71,8 +84,8 @@ public class Session {
         this.id = id;
     }
 
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
     public void setDayOfWeek(DayOfWeek dayOfWeek) {
