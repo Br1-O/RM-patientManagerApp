@@ -22,7 +22,7 @@ public class ClinicalHistory {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int clinicHistoryId; //main id for db
+    private Long clinicHistoryId; //main id for db
     private String clinicHistoryCode; //use this one for search by user
     private Date sessionDate;
     @Column(length = 4000)
@@ -41,7 +41,7 @@ public class ClinicalHistory {
     public ClinicalHistory() {
     }
 
-    public ClinicalHistory(int clinicHistoryId, String clinicHistoryCode, Date sessionDate, String content, String observation, String conclusion, List<String> keyWords, List<ClinicalHistoryFile> files, String psychologistName) {
+    public ClinicalHistory(Long clinicHistoryId, String clinicHistoryCode, Date sessionDate, String content, String observation, String conclusion, List<String> keyWords, List<ClinicalHistoryFile> files, String psychologistName) {
         this.clinicHistoryId = clinicHistoryId;
         this.clinicHistoryCode = clinicHistoryCode;
         this.sessionDate = sessionDate;
@@ -53,7 +53,7 @@ public class ClinicalHistory {
         this.psychologistName = psychologistName;
     }
 
-    public int getClinicHistoryId() {
+    public Long getClinicHistoryId() {
         return clinicHistoryId;
     }
 
@@ -89,7 +89,7 @@ public class ClinicalHistory {
         return psychologistName;
     }
 
-    public void setClinicHistoryId(int clinicHistoryId) {
+    public void setClinicHistoryId(Long clinicHistoryId) {
         this.clinicHistoryId = clinicHistoryId;
     }
 

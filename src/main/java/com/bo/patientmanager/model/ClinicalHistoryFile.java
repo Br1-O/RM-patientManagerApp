@@ -18,7 +18,7 @@ import java.util.List;
 public class ClinicalHistoryFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     
     @ManyToOne
     @JoinColumn(name= "clinical_history_id", nullable = false)
@@ -32,7 +32,7 @@ public class ClinicalHistoryFile {
     public ClinicalHistoryFile() {
     }
 
-    public ClinicalHistoryFile(int id, ClinicalHistory clinicalHistory, String path, String fileType, String description, List<String> keyWords) {
+    public ClinicalHistoryFile(Long id, ClinicalHistory clinicalHistory, String path, String fileType, String description, List<String> keyWords) {
         this.id = id;
         this.clinicalHistory = clinicalHistory;
         this.path = path;
@@ -41,7 +41,7 @@ public class ClinicalHistoryFile {
         this.keyWords = keyWords;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -65,7 +65,7 @@ public class ClinicalHistoryFile {
         return keyWords;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -19,7 +19,7 @@ import java.util.Date;
 public class RelativeObservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int relativeObservationId;
+    private Long relativeObservationId;
     
     @ManyToOne
     @JoinColumn(name = "patient_relative_id", nullable = false)
@@ -32,14 +32,14 @@ public class RelativeObservation {
     public RelativeObservation() {
     }
 
-    public RelativeObservation(int relativeObservationId, PatientRelativeRelation patientRelativeRelation, Date date, String content) {
+    public RelativeObservation(Long relativeObservationId, PatientRelativeRelation patientRelativeRelation, Date date, String content) {
         this.relativeObservationId = relativeObservationId;
         this.patientRelativeRelation = patientRelativeRelation;
         this.date = date;
         this.content = content;
     }
 
-    public int getRelativeObservationId() {
+    public Long getRelativeObservationId() {
         return relativeObservationId;
     }
     
@@ -55,7 +55,7 @@ public class RelativeObservation {
         return content;
     }
 
-    public void setRelativeObservationId(int relativeObservationId) {
+    public void setRelativeObservationId(Long relativeObservationId) {
         this.relativeObservationId = relativeObservationId;
     }
 

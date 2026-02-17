@@ -23,7 +23,7 @@ import java.util.List;
 public class Relative {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int relativeId;
+    private Long relativeId;
     
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
@@ -48,7 +48,7 @@ public class Relative {
     public Relative() {
     }
 
-    public Relative(int relativeId, Patient patient, String name, String lastName, String relation, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email, List<RelativeObservation> observations) {
+    public Relative(Long relativeId, Patient patient, String name, String lastName, String relation, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email, List<RelativeObservation> observations) {
         this.relativeId = relativeId;
         this.patient = patient;
         this.name = name;
@@ -66,7 +66,7 @@ public class Relative {
         this.observations = observations;
     }
 
-    public int getRelativeId() {
+    public Long getRelativeId() {
         return relativeId;
     }
     
@@ -126,7 +126,7 @@ public class Relative {
         return observations;
     }
 
-    public void setRelativeId(int relativeId) {
+    public void setRelativeId(Long relativeId) {
         this.relativeId = relativeId;
     }
     

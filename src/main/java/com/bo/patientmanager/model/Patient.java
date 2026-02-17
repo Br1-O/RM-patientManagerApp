@@ -30,7 +30,7 @@ public class Patient {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int patientId;
+    private Long patientId;
     private String name;
     private String lastName;
     private Date birthday;
@@ -62,7 +62,7 @@ public class Patient {
         this.state = State.ACTIVO;
     }
 
-    public Patient(int patientId, 
+    public Patient(Long patientId, 
             String name, 
             String lastName, 
             Date birthday, 
@@ -98,7 +98,7 @@ public class Patient {
         this.state = State.ACTIVO;
     }
 
-    public int getPatientId() {
+    public Long getPatientId() {
         return patientId;
     }
 
@@ -178,7 +178,7 @@ public class Patient {
         return relatives;
     }
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
 

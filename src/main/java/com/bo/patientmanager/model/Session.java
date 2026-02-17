@@ -21,7 +21,7 @@ import java.time.LocalTime;
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
@@ -37,7 +37,7 @@ public class Session {
     public Session() {
     }
 
-    public Session(int id, Patient patient, DayOfWeek dayOfWeek, LocalTime from, LocalTime to, String mode, String difBillingRate, String currency) {
+    public Session(Long id, Patient patient, DayOfWeek dayOfWeek, LocalTime from, LocalTime to, String mode, String difBillingRate, String currency) {
         this.id = id;
         this.patient = patient;
         this.dayOfWeek = dayOfWeek;
@@ -48,7 +48,7 @@ public class Session {
         this.currency = currency;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -80,7 +80,7 @@ public class Session {
         return currency;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
