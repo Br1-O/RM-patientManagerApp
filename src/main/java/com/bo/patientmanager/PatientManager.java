@@ -20,9 +20,5 @@ public class PatientManager {
         MainWindow mainWindow = new MainWindow();
         mainWindow.setVisible(true);
         mainWindow.setLocationRelativeTo(null);
-        
-        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
-
-        em.close();
     }
 }
