@@ -4,6 +4,7 @@
  */
 package com.bo.patientmanager.gui;
 
+import com.bo.patientmanager.gui.component.BackgroundPanel;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 
@@ -48,7 +49,7 @@ public class LoadPatientForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg = new javax.swing.JPanel();
+        bg =  new BackgroundPanel("/public/bg/bg_nodes.jpg");
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -101,7 +102,6 @@ public class LoadPatientForm extends javax.swing.JPanel {
         txtPatientInitialObservations = new javax.swing.JTextArea();
         btnSaveNewPatientForm = new javax.swing.JButton();
         btnClearPatientForm = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         bg.setBackground(new java.awt.Color(232, 216, 255));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -585,9 +585,6 @@ public class LoadPatientForm extends javax.swing.JPanel {
         });
         bg.add(btnClearPatientForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 580, 140, 56));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/bg/bg_nodes.jpg"))); // NOI18N
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -781,7 +778,6 @@ public class LoadPatientForm extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbPatientSessionMode1;
     private javax.swing.JComboBox<String> cmbPatientSessionMode2;
     private javax.swing.JComboBox<String> cmbPatientSessionMode3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

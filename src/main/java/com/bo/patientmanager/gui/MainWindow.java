@@ -4,6 +4,7 @@
  */
 package com.bo.patientmanager.gui;
 
+import com.bo.patientmanager.gui.component.BackgroundPanel;
 import java.awt.BorderLayout;
 
 
@@ -12,14 +13,25 @@ import java.awt.BorderLayout;
  * @author Documentos
  */
 public class MainWindow extends javax.swing.JFrame {
+    
+    private BackgroundPanel bgContent;
 
     /**
      * Creates new form Main
      */
     public MainWindow() {
+        
         initComponents();
-        menuBg.setOpaque(false);
+
+        content.removeAll();
         content.setLayout(new BorderLayout());
+
+        bgContent = new BackgroundPanel("/public/bg/bg_nodes.jpg");
+        bgContent.setLayout(new BorderLayout());
+
+        content.add(bgContent, BorderLayout.CENTER);
+        
+        bgContent.setView(new HomePane());
     }
 
     /**
@@ -42,9 +54,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -138,17 +148,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Desktop\\Projects\\BringOnline\\Ro\\patientManager\\src\\main\\resources\\public\\icons\\logo2.png")); // NOI18N
-        content.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, 350));
-
         title.setBackground(new java.awt.Color(61, 25, 119));
         title.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 255));
         title.setText("Historias Clinicas");
         content.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/bg/bg_nodes.jpg"))); // NOI18N
-        content.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         mainBg.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 720));
 
@@ -177,18 +181,10 @@ public class MainWindow extends javax.swing.JFrame {
     private void btnLoadNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadNewPatientActionPerformed
 
         //creates and opens the loading window for a new Patient
-        //LoadPatient windowLoadPatient = new LoadPatient();
-        //windowLoadPatient.setVisible(true);
-        //windowLoadPatient.setLocationRelativeTo(null);
-        
-        LoadPatientForm windowLoadPatient = new LoadPatientForm();
-        windowLoadPatient.setSize(790, 600);
-        windowLoadPatient.setLocation(0,0);
+        LoadPatientForm loadPatientFormPane = new LoadPatientForm();
 
-        content.removeAll();
-        content.add(windowLoadPatient, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        bgContent.setView(loadPatientFormPane);
+
     }//GEN-LAST:event_btnLoadNewPatientActionPerformed
 
     private void btnSearchPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchPatientActionPerformed
@@ -213,9 +209,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchPatient;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel logo;
     private javax.swing.JPanel mainBg;
     private javax.swing.JPanel menuBg;
     private javax.swing.JLabel title;
