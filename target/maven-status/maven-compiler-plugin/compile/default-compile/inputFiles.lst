@@ -6,6 +6,7 @@ C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\service\ClinicalHistoryFileService.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\repository\ClinicalHistoryFileRepository.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\repository\SessionRepository.java
+C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\SeeAllPatientsPane.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\LoadPatientForm.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\PatientManager.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\service\ClinicalHistoryService.java
@@ -17,6 +18,7 @@ C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\service\PatientService.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\repository\ClinicalHistoryRepository.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\component\BackgroundPanel.java
+C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\component\CustomMessageDialog.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\MainWindow.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\model\RelativeObservation.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\repository\RelativeObservationRepository.java

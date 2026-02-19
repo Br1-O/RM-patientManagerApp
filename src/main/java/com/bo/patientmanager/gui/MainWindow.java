@@ -62,7 +62,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1280, 820));
 
         mainBg.setBackground(new java.awt.Color(232, 216, 255));
         mainBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -197,6 +196,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnGetAllPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetAllPatientsActionPerformed
         // TODO add your handling code here:
+        bgContent.setView(new SeeAllPatientsPane());
     }//GEN-LAST:event_btnGetAllPatientsActionPerformed
 
     private void btnSearchClinicHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchClinicHistoryActionPerformed

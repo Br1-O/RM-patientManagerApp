@@ -8,12 +8,14 @@ com\bo\patientmanager\gui\LoadPatientForm$3.class
 com\bo\patientmanager\gui\LoadPatientForm$18.class
 com\bo\patientmanager\model\ClinicalHistory.class
 com\bo\patientmanager\repository\BaseRepository.class
+com\bo\patientmanager\gui\component\CustomMessageDialog$Position.class
 com\bo\patientmanager\service\ClinicalHistoryFileService.class
 com\bo\patientmanager\gui\HomePane.class
 com\bo\patientmanager\gui\LoadPatientForm$6.class
 com\bo\patientmanager\model\Patient.class
 com\bo\patientmanager\service\RelativeObservationService.class
 com\bo\patientmanager\gui\LoadPatientForm$14.class
+com\bo\patientmanager\gui\component\CustomMessageDialog$1.class
 com\bo\patientmanager\repository\ClinicalHistoryFileRepository.class
 com\bo\patientmanager\gui\MainWindow$5.class
 com\bo\patientmanager\model\Relative.class
@@ -27,6 +29,7 @@ com\bo\patientmanager\gui\LoadPatientForm$11.class
 com\bo\patientmanager\gui\LoadPatientForm.class
 com\bo\patientmanager\PatientManager.class
 com\bo\patientmanager\repository\PatientRepository.class
+com\bo\patientmanager\gui\SeeAllPatientsPane.class
 com\bo\patientmanager\repository\RelativeRepository.class
 com\bo\patientmanager\gui\LoadPatientForm$2.class
 com\bo\patientmanager\service\RelativeService.class
@@ -41,6 +44,7 @@ com\bo\patientmanager\gui\MainWindow$6.class
 com\bo\patientmanager\gui\LoadPatientForm$9.class
 com\bo\patientmanager\gui\MainWindow$3.class
 utils\time\DateMapper.class
+com\bo\patientmanager\gui\component\CustomMessageDialog.class
 com\bo\patientmanager\gui\LoadPatientForm$1.class
 com\bo\patientmanager\gui\LoadPatientForm$10.class
 com\bo\patientmanager\service\PatientService.class
