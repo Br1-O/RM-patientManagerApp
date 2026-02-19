@@ -9,6 +9,7 @@ com\bo\patientmanager\gui\LoadPatientForm$18.class
 com\bo\patientmanager\model\ClinicalHistory.class
 com\bo\patientmanager\repository\BaseRepository.class
 com\bo\patientmanager\service\ClinicalHistoryFileService.class
+com\bo\patientmanager\gui\HomePane.class
 com\bo\patientmanager\gui\LoadPatientForm$6.class
 com\bo\patientmanager\model\Patient.class
 com\bo\patientmanager\service\RelativeObservationService.class
@@ -18,6 +19,7 @@ com\bo\patientmanager\gui\MainWindow$5.class
 com\bo\patientmanager\model\Relative.class
 com\bo\patientmanager\repository\PatientRelativeRelationRepository.class
 com\bo\patientmanager\model\ClinicalHistoryFile.class
+com\bo\patientmanager\gui\component\BackgroundPanel.class
 com\bo\patientmanager\gui\LoadPatientForm$8.class
 com\bo\patientmanager\gui\MainWindow$2.class
 com\bo\patientmanager\service\ClinicalHistoryService.class

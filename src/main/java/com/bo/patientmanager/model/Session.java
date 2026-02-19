@@ -4,12 +4,14 @@
  */
 package com.bo.patientmanager.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
@@ -18,6 +20,7 @@ import java.time.LocalTime;
  * @author Bring Online
  */
 @Entity
+@Table(name = "patient_session")
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +31,9 @@ public class Session {
     private Patient patient;    
     
     private DayOfWeek dayOfWeek;
+    @Column(name = "start_time")
     private LocalTime from;
+    @Column(name = "end_time")
     private LocalTime to;
     private String mode;
     private String difBillingRate;

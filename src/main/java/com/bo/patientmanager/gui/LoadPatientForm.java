@@ -9,15 +9,16 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 
 import com.bo.patientmanager.model.Patient;
+import com.bo.patientmanager.model.Session;
 import utils.time.DateMapper;
 import com.bo.patientmanager.service.PatientService;
+import com.bo.patientmanager.service.SessionService;
 import com.toedter.calendar.JDateChooser;
 import jakarta.persistence.EntityManagerFactory;
 import java.awt.BorderLayout;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Date;
-import persistence.JPAUtil;
 
 /**
  *
@@ -26,11 +27,14 @@ import persistence.JPAUtil;
 public class LoadPatientForm extends javax.swing.JPanel {
     
     private JDateChooser dtPatientBirthday;
+    
+    private PatientService patientService = null;
+    private SessionService sessionService = null;
 
     /**
      * Creates new form LoadPatientForm
      */
-    public LoadPatientForm() {
+    public LoadPatientForm(EntityManagerFactory em) {
         initComponents();
         
         dtPatientBirthday = new JDateChooser();
@@ -38,6 +42,9 @@ public class LoadPatientForm extends javax.swing.JPanel {
 
         jPanelPatientBirthday.setLayout(new BorderLayout());
         jPanelPatientBirthday.add(dtPatientBirthday, BorderLayout.CENTER);
+        
+        patientService = new PatientService(em);
+        sessionService = new SessionService(em);
     }
 
     /**
@@ -666,67 +673,98 @@ public class LoadPatientForm extends javax.swing.JPanel {
         String phone2 = txtPatientPhone2.getText();
         String email = txtPatientEmail.getText();
         String socials = txtPatientSocials.getText();
-        String difBillingRate = txtPatientDifBillingRate.getText();
         String derivedFrom = txtPatientDerivedFrom.getText();
         String initialObservations = txtPatientInitialObservations.getText();
         Date birthday = dtPatientBirthday.getDate();
         String gender = (String) cmbPatientGender.getSelectedItem();
+        String avatar = "/resources/public/profile/defaultAvatar.jpg";
         String country = (String) cmbPatientCountry.getSelectedItem();
-        String currency = (String) cmbPatientCurrency.getSelectedItem();
-        String sessionDay1 = (String) cmbPatientSessionDay1.getSelectedItem();
-        String sessionDay2 = (String) cmbPatientSessionDay2.getSelectedItem();
-        String sessionDay3 = (String) cmbPatientSessionDay3.getSelectedItem();
-        LocalTime sessionHour1 = (LocalTime) cmbPatientSessionHour1.getSelectedItem();
-        LocalTime sessionHour2 = (LocalTime) cmbPatientSessionHour2.getSelectedItem();
-        LocalTime sessionHour3 = (LocalTime) cmbPatientSessionHour3.getSelectedItem();
-        String sessionMode1 = (String) cmbPatientSessionMode1.getSelectedItem();
-        String sessionMode2 = (String) cmbPatientSessionMode2.getSelectedItem();
-        String sessionMode3 = (String) cmbPatientSessionMode3.getSelectedItem();
-
-        DayOfWeek castedSessionDay1 = DateMapper.mapDay(sessionDay1);
-        DayOfWeek castedSessionDay2 = DateMapper.mapDay(sessionDay2);
-        DayOfWeek castedSessionDay3 = DateMapper.mapDay(sessionDay3);
-
-        /**
+        
         Patient newPatient = new Patient(name,
             lastName,
+            birthday,
+            gender,
+            avatar,
             address,
             city,
+            country,
             phone,
             phone2,
             email,
             socials,
-            difBillingRate,
             derivedFrom,
-            initialObservations,
-            birthday,
-            gender,
-            country,
-            currency,
-            sessionDay1,
-            sessionDay2,
-            sessionDay3,
-            sessionHour1,
-            sessionHour2,
-            sessionHour3,
+            initialObservations);
+        
+        patientService.create(newPatient);
+        
+        String difBillingRate = txtPatientDifBillingRate.getText();
+        String currency = (String) cmbPatientCurrency.getSelectedItem();
+        
+        if(cmbPatientSessionDay1.getSelectedIndex() != 0 && cmbPatientSessionHour1.getSelectedIndex() != 0){
+
+            String sessionDay1 = (String) cmbPatientSessionDay1.getSelectedItem();
+            DayOfWeek castedSessionDay1 = DateMapper.mapDay(sessionDay1);
+
+            String sessionHour1 = (String) cmbPatientSessionHour1.getSelectedItem();
+            LocalTime castedSessionHour1 = DateMapper.mapHour(sessionHour1);
+
+            String sessionMode1 = (String) cmbPatientSessionMode1.getSelectedItem();
+
+
+            Session newSession1 = new Session(newPatient,
+        castedSessionDay1,
+            castedSessionHour1,
+             castedSessionHour1.plusHours(1),
             sessionMode1,
+                difBillingRate,
+                currency    
+            );
+            
+            sessionService.create(newSession1);
+        }
+        
+        if(cmbPatientSessionDay2.getSelectedIndex() != 0 && cmbPatientSessionHour2.getSelectedIndex() != 0){
+            String sessionDay2 = (String) cmbPatientSessionDay2.getSelectedItem();
+            DayOfWeek castedSessionDay2 = DateMapper.mapDay(sessionDay2);
+
+            String sessionHour2 = (String) cmbPatientSessionHour2.getSelectedItem();
+            LocalTime castedSessionHour2 = DateMapper.mapHour(sessionHour2);
+
+            String sessionMode2 = (String) cmbPatientSessionMode2.getSelectedItem();
+
+            Session newSession2 = new Session(newPatient,
+        castedSessionDay2,
+            castedSessionHour2,
+             castedSessionHour2.plusHours(1),
             sessionMode2,
-            sessionMode3);
+                difBillingRate,
+                currency    
+            );
+            
+            sessionService.create(newSession2);
+        }
 
-        Session newSession1 = new Session(newPatient,
-            sessionDay1,
+        if(cmbPatientSessionDay3.getSelectedIndex() != 0 && cmbPatientSessionHour3.getSelectedIndex() != 0){
+            String sessionDay3 = (String) cmbPatientSessionDay3.getSelectedItem();
+            DayOfWeek castedSessionDay3 = DateMapper.mapDay(sessionDay3);
+                        
+            String sessionHour3 = (String) cmbPatientSessionHour3.getSelectedItem();
+            LocalTime castedSessionHour3 = DateMapper.mapHour(sessionHour3);
+                        
+            String sessionMode3 = (String) cmbPatientSessionMode3.getSelectedItem();
+            
+            Session newSession3 = new Session(newPatient,
+        castedSessionDay3,
+            castedSessionHour3,
+             castedSessionHour3.plusHours(1),
+            sessionMode3,
+                difBillingRate,
+                currency    
+            );
+            
+            sessionService.create(newSession3);
+        }
 
-        )
-
-        this.id = id;
-        this.patient = patient;
-        this.dayOfWeek = dayOfWeek;
-        this.from = from;
-        this.to = to;
-        this.mode = mode;
-        this.difBillingRate = difBillingRate;
-        this.currency = currency;
-        * */
     }//GEN-LAST:event_btnSaveNewPatientFormActionPerformed
 
     private void btnClearPatientFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearPatientFormActionPerformed

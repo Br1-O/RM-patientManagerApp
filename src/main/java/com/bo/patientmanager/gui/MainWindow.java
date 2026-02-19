@@ -5,7 +5,9 @@
 package com.bo.patientmanager.gui;
 
 import com.bo.patientmanager.gui.component.BackgroundPanel;
+import jakarta.persistence.EntityManagerFactory;
 import java.awt.BorderLayout;
+import persistence.JPAUtil;
 
 
 /**
@@ -15,6 +17,8 @@ import java.awt.BorderLayout;
 public class MainWindow extends javax.swing.JFrame {
     
     private BackgroundPanel bgContent;
+    
+    EntityManagerFactory em = JPAUtil.getEntityManagerFactory();
 
     /**
      * Creates new form Main
@@ -181,7 +185,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void btnLoadNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadNewPatientActionPerformed
 
         //creates and opens the loading window for a new Patient
-        LoadPatientForm loadPatientFormPane = new LoadPatientForm();
+        LoadPatientForm loadPatientFormPane = new LoadPatientForm(em);
 
         bgContent.setView(loadPatientFormPane);
 
