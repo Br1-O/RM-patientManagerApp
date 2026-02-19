@@ -5,8 +5,6 @@
 package com.bo.patientmanager;
 
 import com.bo.patientmanager.gui.MainWindow;
-import jakarta.persistence.EntityManager;
-import persistence.JPAUtil;
 
 /**
  *

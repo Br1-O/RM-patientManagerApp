@@ -4,6 +4,9 @@
  */
 package com.bo.patientmanager.gui;
 
+import java.awt.BorderLayout;
+
+
 /**
  *
  * @author Documentos
@@ -16,6 +19,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
         menuBg.setOpaque(false);
+        content.setLayout(new BorderLayout());
     }
 
     /**
@@ -28,8 +32,6 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         mainBg = new javax.swing.JPanel();
-        title = new javax.swing.JLabel();
-        logo = new javax.swing.JLabel();
         menuBg = new javax.swing.JPanel();
         btnSearchClinicHistory = new javax.swing.JButton();
         btnGetAllPatients = new javax.swing.JButton();
@@ -37,25 +39,21 @@ public class MainWindow extends javax.swing.JFrame {
         btnLoadNewPatient = new javax.swing.JButton();
         btnLoadNewClinicHistory = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1280, 820));
 
         mainBg.setBackground(new java.awt.Color(232, 216, 255));
         mainBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        title.setBackground(new java.awt.Color(61, 25, 119));
-        title.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
-        title.setForeground(new java.awt.Color(255, 255, 255));
-        title.setText("Historias Clinicas");
-        mainBg.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
-
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Desktop\\Projects\\BringOnline\\Ro\\patientManager\\src\\main\\resources\\public\\icons\\logo2.png")); // NOI18N
-        mainBg.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, 350));
-
-        menuBg.setBackground(new java.awt.Color(232, 216, 255));
+        menuBg.setBackground(new java.awt.Color(0, 0, 102));
         menuBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSearchClinicHistory.setBackground(new java.awt.Color(61, 25, 119));
@@ -68,7 +66,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnSearchClinicHistoryActionPerformed(evt);
             }
         });
-        menuBg.add(btnSearchClinicHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 175, 286, 56));
+        menuBg.add(btnSearchClinicHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 250, 56));
 
         btnGetAllPatients.setBackground(new java.awt.Color(61, 25, 119));
         btnGetAllPatients.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -80,7 +78,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnGetAllPatientsActionPerformed(evt);
             }
         });
-        menuBg.add(btnGetAllPatients, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 27, 286, 56));
+        menuBg.add(btnGetAllPatients, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 56));
 
         btnSearchPatient.setBackground(new java.awt.Color(61, 25, 119));
         btnSearchPatient.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -92,7 +90,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnSearchPatientActionPerformed(evt);
             }
         });
-        menuBg.add(btnSearchPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 101, 286, 56));
+        menuBg.add(btnSearchPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 190, 56));
 
         btnLoadNewPatient.setBackground(new java.awt.Color(61, 25, 119));
         btnLoadNewPatient.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -104,19 +102,19 @@ public class MainWindow extends javax.swing.JFrame {
                 btnLoadNewPatientActionPerformed(evt);
             }
         });
-        menuBg.add(btnLoadNewPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 249, 286, 56));
+        menuBg.add(btnLoadNewPatient, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 190, 56));
 
         btnLoadNewClinicHistory.setBackground(new java.awt.Color(61, 25, 119));
         btnLoadNewClinicHistory.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLoadNewClinicHistory.setForeground(new java.awt.Color(255, 255, 255));
         btnLoadNewClinicHistory.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Desktop\\Projects\\BringOnline\\Ro\\patientManager\\src\\main\\resources\\public\\icons\\contract.png")); // NOI18N
-        btnLoadNewClinicHistory.setText("Cargar Historia Clinica");
+        btnLoadNewClinicHistory.setText("Cargar Sesión");
         btnLoadNewClinicHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadNewClinicHistoryActionPerformed(evt);
             }
         });
-        menuBg.add(btnLoadNewClinicHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 323, 286, 56));
+        menuBg.add(btnLoadNewClinicHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 210, 56));
 
         btnExit.setBackground(new java.awt.Color(61, 25, 119));
         btnExit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -128,15 +126,31 @@ public class MainWindow extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        menuBg.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 397, 286, 56));
+        menuBg.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 20, 140, 56));
 
-        mainBg.add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 350, 470));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/bg/bg_nodes_menu.jpg"))); // NOI18N
+        menuBg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Downloads\\33114809_rm251-mind-15-e2.jpg")); // NOI18N
-        mainBg.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, 600));
+        mainBg.add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Downloads\\33114809_rm251-mind-15-e3.jpg")); // NOI18N
-        mainBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 600));
+        mainBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 100));
+
+        content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Desktop\\Projects\\BringOnline\\Ro\\patientManager\\src\\main\\resources\\public\\icons\\logo2.png")); // NOI18N
+        content.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, 350));
+
+        title.setBackground(new java.awt.Color(61, 25, 119));
+        title.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setText("Historias Clinicas");
+        content.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/bg/bg_nodes.jpg"))); // NOI18N
+        content.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        mainBg.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1280, 720));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,9 +177,18 @@ public class MainWindow extends javax.swing.JFrame {
     private void btnLoadNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadNewPatientActionPerformed
 
         //creates and opens the loading window for a new Patient
-        LoadPatient windowLoadPatient = new LoadPatient();
-        windowLoadPatient.setVisible(true);
-        windowLoadPatient.setLocationRelativeTo(null);
+        //LoadPatient windowLoadPatient = new LoadPatient();
+        //windowLoadPatient.setVisible(true);
+        //windowLoadPatient.setLocationRelativeTo(null);
+        
+        LoadPatientForm windowLoadPatient = new LoadPatientForm();
+        windowLoadPatient.setSize(790, 600);
+        windowLoadPatient.setLocation(0,0);
+
+        content.removeAll();
+        content.add(windowLoadPatient, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_btnLoadNewPatientActionPerformed
 
     private void btnSearchPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchPatientActionPerformed
@@ -188,8 +211,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnLoadNewPatient;
     private javax.swing.JButton btnSearchClinicHistory;
     private javax.swing.JButton btnSearchPatient;
+    private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel mainBg;
     private javax.swing.JPanel menuBg;

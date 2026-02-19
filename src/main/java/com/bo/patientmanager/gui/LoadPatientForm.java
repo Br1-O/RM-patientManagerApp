@@ -1,10 +1,14 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.bo.patientmanager.gui;
-//import com.toedter.calendar.JCalendar;
+
+import com.toedter.calendar.JDateChooser;
+import java.awt.BorderLayout;
+
 import com.bo.patientmanager.model.Patient;
+import utils.time.DateMapper;
 import com.bo.patientmanager.service.PatientService;
 import com.toedter.calendar.JDateChooser;
 import jakarta.persistence.EntityManagerFactory;
@@ -16,19 +20,16 @@ import persistence.JPAUtil;
 
 /**
  *
- * @author Documentos
+ * @author Bring Online
  */
-public class LoadPatient extends javax.swing.JFrame {
+public class LoadPatientForm extends javax.swing.JPanel {
     
     private JDateChooser dtPatientBirthday;
-    
-    EntityManagerFactory emf = JPAUtil.getEntityManagerFactory();
-    PatientService patientService = new PatientService(emf);
 
     /**
-     * Creates new form LoadPatient
+     * Creates new form LoadPatientForm
      */
-    public LoadPatient() {
+    public LoadPatientForm() {
         initComponents();
         
         dtPatientBirthday = new JDateChooser();
@@ -47,7 +48,6 @@ public class LoadPatient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        softBevelBorder1 = new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED);
         bg = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -103,9 +103,6 @@ public class LoadPatient extends javax.swing.JFrame {
         btnClearPatientForm = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
-
         bg.setBackground(new java.awt.Color(232, 216, 255));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bg.setPreferredSize(new java.awt.Dimension(863, 657));
@@ -115,7 +112,7 @@ public class LoadPatient extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cargar nuevo paciente");
-        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(61, 25, 119));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -326,23 +323,25 @@ public class LoadPatient extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel18)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(0, 76, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel6))
+                            .addComponent(txtPatientPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPatientPhone2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPatientEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                            .addComponent(txtPatientPhone2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtPatientPhone, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtPatientSocials))
-                        .addGap(15, 15, 15)))
-                .addContainerGap())
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(24, 24, 24)
+                                .addComponent(txtPatientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPatientSocials, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(41, 41, 41))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,23 +351,19 @@ public class LoadPatient extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtPatientPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtPatientPhone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPatientPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtPatientEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtPatientPhone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
                     .addComponent(txtPatientSocials, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, -1, -1));
+        bg.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 720, 180));
 
         jPanel4.setBackground(new java.awt.Color(61, 25, 119));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -411,6 +406,11 @@ public class LoadPatient extends javax.swing.JFrame {
         });
 
         cmbPatientSessionHour2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00" }));
+        cmbPatientSessionHour2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPatientSessionHour2ActionPerformed(evt);
+            }
+        });
 
         cmbPatientSessionDay3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado" }));
         cmbPatientSessionDay3.addActionListener(new java.awt.event.ActionListener() {
@@ -464,29 +464,28 @@ public class LoadPatient extends javax.swing.JFrame {
                             .addComponent(cmbPatientSessionMode1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel19)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(cmbPatientSessionDay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel27)
                         .addGap(18, 18, 18)
-                        .addComponent(cmbPatientSessionHour3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbPatientSessionMode3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPatientDerivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(cmbPatientSessionDay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cmbPatientSessionHour2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cmbPatientSessionMode2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel27)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtPatientDerivedFrom))
-                        .addGroup(jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel14)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtPatientDifBillingRate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cmbPatientCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(cmbPatientSessionDay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbPatientSessionHour3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbPatientSessionMode3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPatientDifBillingRate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbPatientCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -503,29 +502,29 @@ public class LoadPatient extends javax.swing.JFrame {
                     .addComponent(cmbPatientSessionDay1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPatientSessionHour1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPatientSessionMode1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbPatientSessionDay2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPatientSessionHour2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPatientSessionMode2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbPatientSessionDay3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPatientSessionHour3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPatientSessionMode3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtPatientDifBillingRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbPatientCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(txtPatientDerivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+        bg.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 320, 390));
 
         jPanel6.setBackground(new java.awt.Color(61, 25, 119));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -546,9 +545,9 @@ public class LoadPatient extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -556,11 +555,11 @@ public class LoadPatient extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel26)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 302, -1));
+        bg.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 100, 340, 390));
 
         btnSaveNewPatientForm.setBackground(new java.awt.Color(61, 25, 119));
         btnSaveNewPatientForm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -572,7 +571,7 @@ public class LoadPatient extends javax.swing.JFrame {
                 btnSaveNewPatientFormActionPerformed(evt);
             }
         });
-        bg.add(btnSaveNewPatientForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 700, 140, 56));
+        bg.add(btnSaveNewPatientForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 580, 140, 56));
 
         btnClearPatientForm.setBackground(new java.awt.Color(61, 25, 119));
         btnClearPatientForm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -584,24 +583,82 @@ public class LoadPatient extends javax.swing.JFrame {
                 btnClearPatientFormActionPerformed(evt);
             }
         });
-        bg.add(btnClearPatientForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 700, 140, 56));
+        bg.add(btnClearPatientForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 580, 140, 56));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Downloads\\33114809_rm251-mind-15-e.jpg")); // NOI18N
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 790));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/bg/bg_nodes.jpg"))); // NOI18N
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientNameActionPerformed
+
+    private void txtPatientLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientLastNameActionPerformed
+
+    private void txtPatientAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientAddressActionPerformed
+
+    private void txtPatientCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientCityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientCityActionPerformed
+
+    private void cmbPatientGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientGenderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPatientGenderActionPerformed
+
+    private void cmbPatientCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientCountryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPatientCountryActionPerformed
+
+    private void txtPatientPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientPhoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientPhoneActionPerformed
+
+    private void txtPatientPhone2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientPhone2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientPhone2ActionPerformed
+
+    private void txtPatientEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientEmailActionPerformed
+
+    private void txtPatientSocialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientSocialsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientSocialsActionPerformed
+
+    private void cmbPatientSessionDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionDay1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPatientSessionDay1ActionPerformed
+
+    private void cmbPatientSessionDay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionDay2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPatientSessionDay2ActionPerformed
+
+    private void cmbPatientSessionHour1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionHour1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPatientSessionHour1ActionPerformed
+
+    private void cmbPatientSessionDay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionDay3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPatientSessionDay3ActionPerformed
+
+    private void txtPatientDerivedFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientDerivedFromActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPatientDerivedFromActionPerformed
 
     private void btnSaveNewPatientFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveNewPatientFormActionPerformed
         String name = txtPatientName.getText();
@@ -619,48 +676,51 @@ public class LoadPatient extends javax.swing.JFrame {
         String gender = (String) cmbPatientGender.getSelectedItem();
         String country = (String) cmbPatientCountry.getSelectedItem();
         String currency = (String) cmbPatientCurrency.getSelectedItem();
-        DayOfWeek sessionDay1 = (DayOfWeek) cmbPatientSessionDay1.getSelectedItem();
-        DayOfWeek sessionDay2 = (DayOfWeek) cmbPatientSessionDay2.getSelectedItem();
-        DayOfWeek sessionDay3 = (DayOfWeek) cmbPatientSessionDay3.getSelectedItem();
+        String sessionDay1 = (String) cmbPatientSessionDay1.getSelectedItem();
+        String sessionDay2 = (String) cmbPatientSessionDay2.getSelectedItem();
+        String sessionDay3 = (String) cmbPatientSessionDay3.getSelectedItem();
         LocalTime sessionHour1 = (LocalTime) cmbPatientSessionHour1.getSelectedItem();
         LocalTime sessionHour2 = (LocalTime) cmbPatientSessionHour2.getSelectedItem();
         LocalTime sessionHour3 = (LocalTime) cmbPatientSessionHour3.getSelectedItem();
         String sessionMode1 = (String) cmbPatientSessionMode1.getSelectedItem();
         String sessionMode2 = (String) cmbPatientSessionMode2.getSelectedItem();
         String sessionMode3 = (String) cmbPatientSessionMode3.getSelectedItem();
-        
+
+        DayOfWeek castedSessionDay1 = DateMapper.mapDay(sessionDay1);
+        DayOfWeek castedSessionDay2 = DateMapper.mapDay(sessionDay2);
+        DayOfWeek castedSessionDay3 = DateMapper.mapDay(sessionDay3);
 
         /**
-        Patient newPatient = new Patient(name, 
-                lastName, 
-                address, 
-                city, 
-                phone, 
-                phone2, 
-                email, 
-                socials, 
-                difBillingRate, 
-                derivedFrom, 
-                initialObservations, 
-                birthday, 
-                gender, 
-                country, 
-                currency, 
-                sessionDay1, 
-                sessionDay2, 
-                sessionDay3, 
-                sessionHour1, 
-                sessionHour2, 
-                sessionHour3, 
-                sessionMode1, 
-                sessionMode2, 
-                sessionMode3);
-        
+        Patient newPatient = new Patient(name,
+            lastName,
+            address,
+            city,
+            phone,
+            phone2,
+            email,
+            socials,
+            difBillingRate,
+            derivedFrom,
+            initialObservations,
+            birthday,
+            gender,
+            country,
+            currency,
+            sessionDay1,
+            sessionDay2,
+            sessionDay3,
+            sessionHour1,
+            sessionHour2,
+            sessionHour3,
+            sessionMode1,
+            sessionMode2,
+            sessionMode3);
+
         Session newSession1 = new Session(newPatient,
-                sessionDay1,
-                
+            sessionDay1,
+
         )
-                
+
         this.id = id;
         this.patient = patient;
         this.dayOfWeek = dayOfWeek;
@@ -671,50 +731,6 @@ public class LoadPatient extends javax.swing.JFrame {
         this.currency = currency;
         * */
     }//GEN-LAST:event_btnSaveNewPatientFormActionPerformed
-
-    private void cmbPatientSessionDay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionDay3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPatientSessionDay3ActionPerformed
-
-    private void cmbPatientSessionHour1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionHour1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPatientSessionHour1ActionPerformed
-
-    private void cmbPatientSessionDay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionDay2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPatientSessionDay2ActionPerformed
-
-    private void txtPatientSocialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientSocialsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientSocialsActionPerformed
-
-    private void txtPatientEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientEmailActionPerformed
-
-    private void txtPatientPhone2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientPhone2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientPhone2ActionPerformed
-
-    private void txtPatientPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientPhoneActionPerformed
-
-    private void txtPatientCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientCityActionPerformed
-
-    private void txtPatientAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientAddressActionPerformed
-
-    private void txtPatientLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientLastNameActionPerformed
-
-    private void txtPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientNameActionPerformed
 
     private void btnClearPatientFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearPatientFormActionPerformed
         txtPatientName.setText("");
@@ -741,24 +757,12 @@ public class LoadPatient extends javax.swing.JFrame {
         cmbPatientSessionMode1.setSelectedIndex(0);
         cmbPatientSessionMode2.setSelectedIndex(0);
         cmbPatientSessionMode3.setSelectedIndex(0);
-        
+
     }//GEN-LAST:event_btnClearPatientFormActionPerformed
 
-    private void txtPatientDerivedFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientDerivedFromActionPerformed
+    private void cmbPatientSessionHour2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionHour2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPatientDerivedFromActionPerformed
-
-    private void cmbPatientSessionDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientSessionDay1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPatientSessionDay1ActionPerformed
-
-    private void cmbPatientGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientGenderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPatientGenderActionPerformed
-
-    private void cmbPatientCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPatientCountryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPatientCountryActionPerformed
+    }//GEN-LAST:event_cmbPatientSessionHour2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -805,7 +809,6 @@ public class LoadPatient extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelPatientBirthday;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.border.SoftBevelBorder softBevelBorder1;
     private javax.swing.JTextField txtPatientAddress;
     private javax.swing.JTextField txtPatientCity;
     private javax.swing.JTextField txtPatientDerivedFrom;
