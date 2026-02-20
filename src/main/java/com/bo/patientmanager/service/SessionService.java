@@ -35,4 +35,12 @@ public class SessionService {
     public List<Session> findAll() {
         return sessionRepository.findAll();
     }
+    
+    public Long countByPatient(Long patientId) {
+        return sessionRepository.countByPatientId(patientId);
+    }
+    
+    public List<Session> findByPatient(Long patientId) {
+        return sessionRepository.findByPatientId(patientId);
+    }
 }

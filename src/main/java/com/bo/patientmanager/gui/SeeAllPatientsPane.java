@@ -4,19 +4,116 @@
  */
 package com.bo.patientmanager.gui;
 
+import com.bo.patientmanager.model.Patient;
+import com.bo.patientmanager.model.Session;
+import com.bo.patientmanager.service.PatientService;
+import com.bo.patientmanager.service.SessionService;
+import jakarta.persistence.EntityManagerFactory;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import utils.time.ModelMapper;
+
 /**
  *
  * @author Bring Online
  */
 public class SeeAllPatientsPane extends javax.swing.JPanel {
+    
+    private PatientService patientService = null;
+    private SessionService sessionService = null;
 
     /**
      * Creates new form seeAllPatientsPane
      */
-    public SeeAllPatientsPane() {
+    public SeeAllPatientsPane(EntityManagerFactory em) {
         initComponents();
         
         this.setOpaque(false);
+                
+        patientService = new PatientService(em);
+        sessionService = new SessionService(em);
+
+        loadPatientsTable();
+    }
+    
+    private void loadPatientsTable() {
+
+        //make default model for table and make it not editable
+        DefaultTableModel tablePatientsModel = new DefaultTableModel(){
+
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+
+        //titles for the fields in the table
+        String titlesForFields[] = {"Num", "Nombre", "Apellido", "Telefono", "Email", "Sesiones", "Estado"};
+
+        //set the titles for the fields in the table
+        tablePatientsModel.setColumnIdentifiers(titlesForFields);
+
+        //load patient's data to the table
+        List<Patient> patients = patientService.findAll();
+
+        if(patients != null){
+            for (Patient p : patients) {
+
+                List<Session> sessions = sessionService.findByPatient(p.getPatientId());
+
+                Object[] row = {
+                    p.getPatientId(),
+                    p.getName(),
+                    p.getLastName(),
+                    p.getPhone1(),
+                    p.getEmail(),
+                    ModelMapper.formatSessions(sessions),
+                    p.getState()
+                };
+
+                tablePatientsModel.addRow(row);
+            }
+
+            tablePatients.setModel(tablePatientsModel);
+            
+            //setting visuals for table row dimensions
+            tablePatients.setRowHeight(28);
+            
+            // Columna 0 = "Num"
+            tablePatients.getColumnModel().getColumn(0).setMinWidth(30);
+            tablePatients.getColumnModel().getColumn(0).setMaxWidth(200);
+            tablePatients.getColumnModel().getColumn(0).setPreferredWidth(38);
+            
+            // Columna 1 = "Name"
+            tablePatients.getColumnModel().getColumn(1).setMinWidth(70);
+            tablePatients.getColumnModel().getColumn(1).setMaxWidth(200);
+            tablePatients.getColumnModel().getColumn(1).setPreferredWidth(70);
+            
+            // Columna 2 = "LastName"
+            tablePatients.getColumnModel().getColumn(2).setMinWidth(90);
+            tablePatients.getColumnModel().getColumn(2).setMaxWidth(200);
+            tablePatients.getColumnModel().getColumn(2).setPreferredWidth(90);
+            
+            // Columna 6 = "State"
+            tablePatients.getColumnModel().getColumn(6).setMinWidth(58);
+            tablePatients.getColumnModel().getColumn(6).setMaxWidth(200);
+            tablePatients.getColumnModel().getColumn(6).setPreferredWidth(70);
+            
+            // Columna 3 = "Phone"
+            tablePatients.getColumnModel().getColumn(3).setMinWidth(50);
+            tablePatients.getColumnModel().getColumn(3).setMaxWidth(200);
+            tablePatients.getColumnModel().getColumn(3).setPreferredWidth(130);
+            
+            // Columna 4 = "Email"
+            tablePatients.getColumnModel().getColumn(4).setMinWidth(50);
+            tablePatients.getColumnModel().getColumn(4).setMaxWidth(200);
+            tablePatients.getColumnModel().getColumn(4).setPreferredWidth(150);
+            
+            // Columna 4 = "Sessions"
+            tablePatients.getColumnModel().getColumn(5).setMinWidth(150);
+            tablePatients.getColumnModel().getColumn(5).setMaxWidth(500);
+            tablePatients.getColumnModel().getColumn(5).setPreferredWidth(350);
+        }
     }
 
     /**
@@ -28,21 +125,147 @@ public class SeeAllPatientsPane extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tableAndMenuContainer = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablePatients = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+
         setPreferredSize(new java.awt.Dimension(1280, 720));
+
+        tableAndMenuContainer.setBackground(new java.awt.Color(61, 25, 119));
+
+        tablePatients.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tablePatients);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/stamped.png"))); // NOI18N
+        jButton1.setText("Ver");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/edit.png"))); // NOI18N
+        jButton2.setText("Editar");
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/remove.png"))); // NOI18N
+        jButton4.setText("Eliminar");
+        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/add (1).png"))); // NOI18N
+        jButton5.setText("Agregar");
+        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tableAndMenuContainerLayout = new javax.swing.GroupLayout(tableAndMenuContainer);
+        tableAndMenuContainer.setLayout(tableAndMenuContainerLayout);
+        tableAndMenuContainerLayout.setHorizontalGroup(
+            tableAndMenuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tableAndMenuContainerLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(tableAndMenuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        tableAndMenuContainerLayout.setVerticalGroup(
+            tableAndMenuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tableAndMenuContainerLayout.createSequentialGroup()
+                .addGroup(tableAndMenuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tableAndMenuContainerLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tableAndMenuContainerLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1294, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(tableAndMenuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(tableAndMenuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel tableAndMenuContainer;
+    private javax.swing.JTable tablePatients;
     // End of variables declaration//GEN-END:variables
 }

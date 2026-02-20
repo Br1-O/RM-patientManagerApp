@@ -33,4 +33,18 @@ public class DateMapper {
 
         return LocalTime.parse(s);
     }
+    
+    public static String dayToSpanish(DayOfWeek d) {
+
+        return switch (d) {
+            case MONDAY    -> "Lunes";
+            case TUESDAY   -> "Martes";
+            case WEDNESDAY -> "Miércoles";
+            case THURSDAY  -> "Jueves";
+            case FRIDAY    -> "Viernes";
+            case SATURDAY  -> "Sábado";
+            case SUNDAY    -> "Domingo";
+        };
+    }
+    
 }

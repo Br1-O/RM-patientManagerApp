@@ -196,7 +196,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnGetAllPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetAllPatientsActionPerformed
         // TODO add your handling code here:
-        bgContent.setView(new SeeAllPatientsPane());
+        bgContent.setView(new SeeAllPatientsPane(em));
     }//GEN-LAST:event_btnGetAllPatientsActionPerformed
 
     private void btnSearchClinicHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchClinicHistoryActionPerformed

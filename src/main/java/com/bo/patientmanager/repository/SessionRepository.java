@@ -47,6 +47,32 @@ public class SessionRepository extends BaseRepository {
               .getResultList()
         );
     }
+    
+    public Long countByPatientId(Long patientId) {
+
+        return execute(em ->
+            em.createQuery(
+                "select count(s) from Session s where s.patient.id = :id",
+                Long.class
+            )
+            .setParameter("id", patientId)
+            .getSingleResult()
+        );
+    }
+    
+    public List<Session> findByPatientId(Long patientId) {
+
+        return execute(em ->
+            em.createQuery(
+                "select s from Session s " +
+                "where s.patient.id = :id " +
+                "order by s.dayOfWeek, s.from",
+                Session.class
+            )
+            .setParameter("id", patientId)
+            .getResultList()
+        );
+    }
 }
 
     
