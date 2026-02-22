@@ -13,9 +13,9 @@ import com.bo.patientmanager.model.Patient;
 import com.bo.patientmanager.model.Session;
 import utils.time.DateMapper;
 import com.bo.patientmanager.service.PatientService;
+import com.bo.patientmanager.service.ServiceManager;
 import com.bo.patientmanager.service.SessionService;
 import com.toedter.calendar.JDateChooser;
-import jakarta.persistence.EntityManagerFactory;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.DayOfWeek;
@@ -30,14 +30,14 @@ import javax.swing.UIManager;
 public class LoadPatientForm extends javax.swing.JPanel {
     
     private JDateChooser dtPatientBirthday;
-    
     private PatientService patientService = null;
     private SessionService sessionService = null;
+
 
     /**
      * Creates new form LoadPatientForm
      */
-    public LoadPatientForm(EntityManagerFactory em) {
+    public LoadPatientForm(ServiceManager serviceManager) {
         initComponents();
         
         dtPatientBirthday = new JDateChooser();
@@ -46,8 +46,8 @@ public class LoadPatientForm extends javax.swing.JPanel {
         jPanelPatientBirthday.setLayout(new BorderLayout());
         jPanelPatientBirthday.add(dtPatientBirthday, BorderLayout.CENTER);
         
-        patientService = new PatientService(em);
-        sessionService = new SessionService(em);
+        this.patientService = serviceManager.getPatientService();
+        this.sessionService = serviceManager.getSessionService();
     }
 
     /**

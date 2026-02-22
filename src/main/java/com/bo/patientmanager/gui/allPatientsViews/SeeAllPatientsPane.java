@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.bo.patientmanager.gui;
+package com.bo.patientmanager.gui.allPatientsViews;
 
+import com.bo.patientmanager.gui.component.BackgroundPanel;
 import com.bo.patientmanager.model.Patient;
 import com.bo.patientmanager.model.Session;
+import com.bo.patientmanager.service.PatientRelativeRelationService;
 import com.bo.patientmanager.service.PatientService;
+import com.bo.patientmanager.service.ServiceManager;
 import com.bo.patientmanager.service.SessionService;
-import jakarta.persistence.EntityManagerFactory;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import utils.time.ModelMapper;
@@ -21,17 +23,24 @@ public class SeeAllPatientsPane extends javax.swing.JPanel {
     
     private PatientService patientService = null;
     private SessionService sessionService = null;
+    private PatientRelativeRelationService patientRelativeRelationService = null;
+    private ServiceManager serviceManager = null;
+        
+    private BackgroundPanel bgContent = null;
 
     /**
      * Creates new form seeAllPatientsPane
      */
-    public SeeAllPatientsPane(EntityManagerFactory em) {
+    public SeeAllPatientsPane(ServiceManager serviceManager, BackgroundPanel bgContent) {
         initComponents();
         
         this.setOpaque(false);
-                
-        patientService = new PatientService(em);
-        sessionService = new SessionService(em);
+        
+        this.patientService = serviceManager.getPatientService();
+        this.sessionService = serviceManager.getSessionService();
+        this.patientRelativeRelationService = serviceManager.getPatientRelativeRelationService();
+        this.serviceManager = serviceManager;
+        this.bgContent = bgContent;
 
         loadPatientsTable();
     }
@@ -244,6 +253,12 @@ public class SeeAllPatientsPane extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Long patientId = null;
+        if(tablePatients.getSelectedRow() != (-1)){
+            patientId = Long.valueOf(tablePatients.getSelectedRow() + 1);
+        }
+        
+        bgContent.setView(new PatientPane(serviceManager, patientId));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

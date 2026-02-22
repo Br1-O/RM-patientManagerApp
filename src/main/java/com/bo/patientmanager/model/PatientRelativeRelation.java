@@ -94,4 +94,9 @@ public class PatientRelativeRelation {
     public void setIsMainContact(boolean isMainContact) {
         this.isMainContact = isMainContact;
     }
+    
+    @Override
+    public String toString() {
+        return relative.getName() + " " + relative.getLastName() + " - " + relative.getRelation();
+    }
 }

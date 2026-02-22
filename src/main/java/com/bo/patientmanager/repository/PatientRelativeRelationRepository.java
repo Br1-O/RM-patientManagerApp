@@ -51,6 +51,20 @@ public class PatientRelativeRelationRepository extends BaseRepository {
               .getResultList()
         );
     }
+    
+    public List<PatientRelativeRelation> findByPatientId(Long patientId) {
+
+        return execute(em ->
+            em.createQuery(
+                "select pr from PatientRelativeRelation pr " +
+                "where pr.patient.id = :id " +
+                "order by pr.id",
+                PatientRelativeRelation.class
+            )
+            .setParameter("id", patientId)
+            .getResultList()
+        );
+    }
 }
 
     

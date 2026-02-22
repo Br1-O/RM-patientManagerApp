@@ -5,6 +5,7 @@
 package com.bo.patientmanager.service;
 
 import com.bo.patientmanager.model.PatientRelativeRelation;
+import com.bo.patientmanager.model.Session;
 import com.bo.patientmanager.repository.PatientRelativeRelationRepository;
 import jakarta.persistence.EntityManagerFactory;
 import java.util.List;
@@ -34,5 +35,9 @@ public class PatientRelativeRelationService {
 
     public List<PatientRelativeRelation> findAll() {
         return patientRelativeRelationRepository.findAll();
+    }
+    
+    public List<PatientRelativeRelation> findByPatient(Long patientId) {
+        return patientRelativeRelationRepository.findByPatientId(patientId);
     }
 }

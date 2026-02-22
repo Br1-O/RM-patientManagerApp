@@ -71,6 +71,11 @@ public class RelativeObservation {
     public void setPatientRelativeRelation(PatientRelativeRelation patientRelativeRelation) {
         this.patientRelativeRelation = patientRelativeRelation;
     }
+    
+    @Override
+    public String toString() {
+        return date + " - " + content;
+    }
 
 }
 

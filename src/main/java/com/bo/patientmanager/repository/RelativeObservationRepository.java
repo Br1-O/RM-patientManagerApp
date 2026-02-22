@@ -51,6 +51,17 @@ public class RelativeObservationRepository extends BaseRepository {
               .getResultList()
         );
     }
+    
+    public List<RelativeObservation> findByRelation(Long relationId){
+        return execute(em ->em.createQuery("""
+            from RelativeObservation ro
+            where ro.patientRelativeRelation.id = :id
+            order by ro.date desc
+        """, RelativeObservation.class)
+        .setParameter("id", relationId)
+        .getResultList()
+        );
+    }
 }
 
     

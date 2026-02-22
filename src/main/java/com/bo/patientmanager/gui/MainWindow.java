@@ -4,7 +4,9 @@
  */
 package com.bo.patientmanager.gui;
 
+import com.bo.patientmanager.gui.allPatientsViews.SeeAllPatientsPane;
 import com.bo.patientmanager.gui.component.BackgroundPanel;
+import com.bo.patientmanager.service.ServiceManager;
 import jakarta.persistence.EntityManagerFactory;
 import java.awt.BorderLayout;
 import persistence.JPAUtil;
@@ -19,6 +21,8 @@ public class MainWindow extends javax.swing.JFrame {
     private BackgroundPanel bgContent;
     
     EntityManagerFactory em = JPAUtil.getEntityManagerFactory();
+    
+    ServiceManager serviceManager = new ServiceManager(em);
 
     /**
      * Creates new form Main
@@ -184,7 +188,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void btnLoadNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadNewPatientActionPerformed
 
         //creates and opens the loading window for a new Patient
-        LoadPatientForm loadPatientFormPane = new LoadPatientForm(em);
+        LoadPatientForm loadPatientFormPane = new LoadPatientForm(serviceManager);
 
         bgContent.setView(loadPatientFormPane);
 
@@ -196,7 +200,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnGetAllPatientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetAllPatientsActionPerformed
         // TODO add your handling code here:
-        bgContent.setView(new SeeAllPatientsPane(em));
+        bgContent.setView(new SeeAllPatientsPane(serviceManager, bgContent));
     }//GEN-LAST:event_btnGetAllPatientsActionPerformed
 
     private void btnSearchClinicHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchClinicHistoryActionPerformed

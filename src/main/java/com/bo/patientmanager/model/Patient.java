@@ -157,8 +157,14 @@ public class Patient {
         return isCurrentPatient;
     }
 
-    public State getState() {
-        return state;
+    public String getState() {
+        return switch (this.state) {
+            case ACTIVO    -> "Activo";
+            case ALTA   -> "Alta";
+            case ABANDONO -> "Abandono";
+            case DERIVACION  -> "Derivación";
+            default -> null;
+        };
     }
 
     public void setPatientId(Long patientId) {
