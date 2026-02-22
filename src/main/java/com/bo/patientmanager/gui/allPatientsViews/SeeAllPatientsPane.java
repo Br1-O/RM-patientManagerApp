@@ -258,7 +258,7 @@ public class SeeAllPatientsPane extends javax.swing.JPanel {
             patientId = Long.valueOf(tablePatients.getSelectedRow() + 1);
         }
         
-        bgContent.setView(new PatientPane(serviceManager, patientId));
+        bgContent.setView(new PatientDataPane(serviceManager, patientId));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
