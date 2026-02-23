@@ -11,6 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import java.util.Date;
 
 /**
@@ -26,7 +28,6 @@ public class RelativeObservation {
     @ManyToOne
     @JoinColumn(name = "patient_relative_id", nullable = false)
     private PatientRelativeRelation patientRelativeRelation;
-        
     private Date date;
     @Column(length = 4000)
     private String content;

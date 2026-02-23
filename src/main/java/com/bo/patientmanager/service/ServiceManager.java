@@ -16,6 +16,7 @@ public class ServiceManager {
     private SessionService sessionService = null;
     private PatientRelativeRelationService patientRelativeRelationService = null;
     private RelativeObservationService relativeObservationService = null;
+    private RelativeService relativeService = null;
 
     public ServiceManager(EntityManagerFactory em) {
         this.em = em;
@@ -23,6 +24,7 @@ public class ServiceManager {
         sessionService = new SessionService(em);
         patientRelativeRelationService = new PatientRelativeRelationService(em);
         relativeObservationService = new RelativeObservationService(em);
+        relativeService = new RelativeService(em);
     }
 
     public EntityManagerFactory getEm() {
@@ -44,8 +46,9 @@ public class ServiceManager {
     public RelativeObservationService getRelativeObservationService() {
         return relativeObservationService;
     }
-    
-    
-    
+
+    public RelativeService getRelativeService() {
+        return relativeService;
+    }
     
 }

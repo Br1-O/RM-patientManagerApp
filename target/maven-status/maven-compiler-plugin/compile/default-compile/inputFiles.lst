@@ -2,6 +2,7 @@ C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\persistence\JPAUtil.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\service\PatientRelativeRelationService.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\allPatientsViews\PatientDataPane.java
+C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\allPatientsViews\RelativeAddForm.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\repository\PatientRelativeRelationRepository.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\service\RelativeObservationService.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\service\ClinicalHistoryFileService.java
@@ -19,9 +20,8 @@ C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\repository\PatientRepository.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\repository\RelativeRepository.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\service\PatientService.java
-C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\allPatientsViews\AddRelativeFormFrame.java
+C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\allPatientsViews\RelativeDataFrame.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\repository\ClinicalHistoryRepository.java
-C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\allPatientsViews\RelativeFrame.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\component\BackgroundPanel.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\component\CustomMessageDialog.java
 C:\Users\Documentos\Desktop\Projects\BringOnline\Ro\patientManager\src\main\java\com\bo\patientmanager\gui\MainWindow.java

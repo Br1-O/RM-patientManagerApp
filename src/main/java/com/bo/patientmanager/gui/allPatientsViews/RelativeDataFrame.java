@@ -32,7 +32,6 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         patientRelativeRelationService = serviceManager.getPatientRelativeRelationService();
         relativeObservationService = serviceManager.getRelativeObservationService();
 
-        initComponents();
         loadData();
     }
     
@@ -122,7 +121,12 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstObservations = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(61, 25, 119));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -281,7 +285,7 @@ public class RelativeDataFrame extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(lstObservations);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 210, 250));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 320, 260));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -314,6 +318,10 @@ public class RelativeDataFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

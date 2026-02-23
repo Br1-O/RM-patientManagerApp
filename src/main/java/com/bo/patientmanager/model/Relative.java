@@ -41,14 +41,11 @@ public class Relative {
     private String phone1;
     private String phone2;
     private String email;
-    
-    @OneToMany
-    private List<RelativeObservation> observations;
 
     public Relative() {
     }
 
-    public Relative(Patient patient, String name, String lastName, String relation, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email, List<RelativeObservation> observations) {
+    public Relative(Patient patient, String name, String lastName, String relation, Date birthday, String gender, String avatar, String address, String city, String country, String phone1, String phone2, String email) {
         this.patient = patient;
         this.name = name;
         this.lastName = lastName;
@@ -62,7 +59,6 @@ public class Relative {
         this.phone1 = phone1;
         this.phone2 = phone2;
         this.email = email;
-        this.observations = observations;
     }
 
     public Long getRelativeId() {
@@ -121,10 +117,6 @@ public class Relative {
         return email;
     }
 
-    public List<RelativeObservation> getObservations() {
-        return observations;
-    }
-
     public void setRelativeId(Long relativeId) {
         this.relativeId = relativeId;
     }
@@ -180,10 +172,5 @@ public class Relative {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public void setObservations(List<RelativeObservation> observations) {
-        this.observations = observations;
-    }
-    
     
 }

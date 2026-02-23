@@ -4,6 +4,7 @@
  */
 package com.bo.patientmanager.gui.allPatientsViews;
 
+import com.bo.patientmanager.gui.component.CustomMessageDialog;
 import com.bo.patientmanager.model.Patient;
 import com.bo.patientmanager.model.PatientRelativeRelation;
 import com.bo.patientmanager.model.Relative;
@@ -11,9 +12,14 @@ import com.bo.patientmanager.model.RelativeObservation;
 import com.bo.patientmanager.service.ServiceManager;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import javax.swing.UIManager;
 
 /**
  *
@@ -43,9 +49,6 @@ public class RelativeAddForm extends javax.swing.JFrame {
         
         this.serviceManager = serviceManager;
         this.patientId = patientId;
-        
-        observationsModel = new DefaultListModel<>();
-        listObservations.setModel(observationsModel);
     }
 
     /**
@@ -89,10 +92,10 @@ public class RelativeAddForm extends javax.swing.JFrame {
         btnSaveNewForm = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listObservations = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtObservations = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -388,7 +391,9 @@ public class RelativeAddForm extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("Obs. Iniciales");
 
-        jScrollPane1.setViewportView(listObservations);
+        txtObservations.setColumns(20);
+        txtObservations.setRows(5);
+        jScrollPane2.setViewportView(txtObservations);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -396,10 +401,10 @@ public class RelativeAddForm extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,8 +412,8 @@ public class RelativeAddForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel26)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 340, 390));
@@ -492,12 +497,10 @@ public class RelativeAddForm extends javax.swing.JFrame {
         String gender = (String) cmbGender.getSelectedItem();
         String country = (String) cmbCountry.getSelectedItem();
         Boolean isMainContact = ckbxIsMainContact.isSelected();
+        String observationsData = txtObservations.getText();
 
         try{
             Patient patient = serviceManager.getPatientService().findById(patientId);
-            
-            // --- Observaciones
-            List<RelativeObservation> allObservationsData = serviceManager.getRelativeObservationService().findByPatientRelativeRelation(patient.getPatientId());
             
             Relative newRelative = new Relative(patient,
                 name,
@@ -511,19 +514,39 @@ public class RelativeAddForm extends javax.swing.JFrame {
                 country,
                 phone1,
                 phone2,
-                email,
-                observationsList);
+                email);
             
+            // --- Observaciones
+            List<RelativeObservation> newObservationsData = new ArrayList<>();
+            
+            // ----Create relation between patient and relative
             PatientRelativeRelation patientRelativeRelation = new PatientRelativeRelation(patient,
                 newRelative,
                 relation,
-                observationsList,
+                newObservationsData,
                 isMainContact
             );
+            
+            // ---Create new observation for the relative
+            Date currentDate = Date.from(LocalDate.now(ZoneId.of("America/Argentina/Buenos_Aires")).atStartOfDay(ZoneId.of("America/Argentina/Buenos_Aires")).toInstant());
+            
+            RelativeObservation newObservation = new RelativeObservation(patientRelativeRelation,
+            currentDate,
+          observationsData
+            );
+            
+            newObservationsData.add(newObservation);
+            
+            patientRelativeRelation.setObservations(newObservationsData);
+            
+            // ---Create into db
+            serviceManager.getRelativeService().create(newRelative);
+            serviceManager.getPatientRelativeRelationService().create(patientRelativeRelation);
+            serviceManager.getRelativeObservationService().create(newObservation);
 
             CustomMessageDialog.show(
                 this,
-                "Paciente guardado correctamente",
+                "Familiar de paciente guardado correctamente",
                 UIManager.getIcon("OptionPane.informationIcon"),
                 new Color(46, 204, 113),
                 Color.WHITE,
@@ -533,7 +556,7 @@ public class RelativeAddForm extends javax.swing.JFrame {
             );
         }
         catch(Exception err){
-            System.out.println("Paciente no guardado");
+            System.out.println("Familiar no guardado");
         }
     }//GEN-LAST:event_btnSaveNewFormActionPerformed
 
@@ -542,40 +565,6 @@ public class RelativeAddForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ckbxIsMainContactActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RelativeAddForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RelativeAddForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RelativeAddForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RelativeAddForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RelativeAddForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClearForm;
@@ -603,13 +592,13 @@ public class RelativeAddForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelBirthday;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<com.bo.patientmanager.model.RelativeObservation> listObservations;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextArea txtObservations;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtPhone2;
     // End of variables declaration//GEN-END:variables
