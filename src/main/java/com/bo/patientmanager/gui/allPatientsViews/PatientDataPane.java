@@ -64,7 +64,7 @@ public class PatientDataPane extends javax.swing.JPanel {
                     PatientRelativeRelation selected = relativesList.getSelectedValue();
 
                     if(selected != null){
-                        new RelativeFrame(serviceManager, selected.getId()).setVisible(true);
+                        new RelativeDataFrame(serviceManager, selected.getId()).setVisible(true);
                     }
                 }
             }
@@ -206,6 +206,9 @@ public class PatientDataPane extends javax.swing.JPanel {
         jLabel42 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         relativesList = new javax.swing.JList<>();
+        btnEditRelative = new javax.swing.JButton();
+        btnDltRelative = new javax.swing.JButton();
+        btnAddRelative = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -287,65 +290,59 @@ public class PatientDataPane extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel10)
-                            .addGap(60, 60, 60)
-                            .addComponent(country))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel21)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lastName))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel38)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel17)))
-                            .addGap(26, 26, 26)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(state)
-                                .addComponent(name))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addGap(18, 18, 18)
+                        .addComponent(city))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(47, 47, 47)
+                        .addComponent(country))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jLabel17))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel12))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gender)
+                            .addComponent(address)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(birthday))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel25)
-                            .addComponent(jLabel12))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel38))
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(gender)
-                            .addComponent(city)
-                            .addComponent(address))))
+                            .addComponent(state)
+                            .addComponent(name)
+                            .addComponent(lastName))))
                 .addContainerGap(147, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel17))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(state))
-                    .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(name)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(4, 4, 4)))
+                .addGap(17, 17, 17)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lastName)
-                    .addComponent(jLabel21))
-                .addGap(24, 24, 24)
+                    .addComponent(jLabel38)
+                    .addComponent(state))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(name))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(lastName))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(birthday))
@@ -359,16 +356,16 @@ public class PatientDataPane extends javax.swing.JPanel {
                     .addComponent(address))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(city)
-                    .addComponent(jLabel25))
+                    .addComponent(jLabel25)
+                    .addComponent(city))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(country))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 340, 360));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 340, 410));
 
         jPanel3.setBackground(new java.awt.Color(61, 25, 119));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -416,25 +413,28 @@ public class PatientDataPane extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel30))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(phone2)
-                            .addComponent(phone1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel31))
+                        .addComponent(jLabel20)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(socials)
-                            .addComponent(email))
-                        .addGap(186, 186, 186))
+                        .addComponent(socials)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel18)
-                        .addGap(82, 82, 82))))
+                        .addGap(82, 323, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel31))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(email)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(phone2)
+                                    .addComponent(phone1))
+                                .addGap(186, 213, Short.MAX_VALUE))))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,19 +444,23 @@ public class PatientDataPane extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(email)
-                    .addComponent(phone1)
-                    .addComponent(jLabel31))
+                    .addComponent(phone1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phone2)
+                    .addComponent(jLabel30))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(email))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jLabel30)
                     .addComponent(socials))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 580, 130));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 340, 220));
 
         jPanel4.setBackground(new java.awt.Color(61, 25, 119));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -542,7 +546,7 @@ public class PatientDataPane extends javax.swing.JPanel {
                                 .addComponent(session3))
                             .addComponent(jLabel33)
                             .addComponent(jLabel40))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -578,7 +582,7 @@ public class PatientDataPane extends javax.swing.JPanel {
                 .addGap(19, 19, 19))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 320, 410));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 340, 410));
 
         jPanel6.setBackground(new java.awt.Color(61, 25, 119));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -614,10 +618,10 @@ public class PatientDataPane extends javax.swing.JPanel {
                 .addComponent(jLabel26)
                 .addGap(18, 18, 18)
                 .addComponent(observations)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 340, 170));
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 340, 220));
 
         jPanel7.setBackground(new java.awt.Color(61, 25, 119));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -629,6 +633,33 @@ public class PatientDataPane extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(relativesList);
 
+        btnEditRelative.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btnEditRelative.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/edit.png"))); // NOI18N
+        btnEditRelative.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEditRelative.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditRelativeActionPerformed(evt);
+            }
+        });
+
+        btnDltRelative.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btnDltRelative.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/remove.png"))); // NOI18N
+        btnDltRelative.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDltRelative.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDltRelativeActionPerformed(evt);
+            }
+        });
+
+        btnAddRelative.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btnAddRelative.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/add (1).png"))); // NOI18N
+        btnAddRelative.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAddRelative.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddRelativeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -637,28 +668,60 @@ public class PatientDataPane extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnDltRelative, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddRelative, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnEditRelative))
+                        .addGap(15, 15, 15))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(121, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel42)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(btnAddRelative, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditRelative, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDltRelative, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, -1, 250));
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 370, 400));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEditRelativeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditRelativeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditRelativeActionPerformed
+
+    private void btnDltRelativeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDltRelativeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDltRelativeActionPerformed
+
+    private void btnAddRelativeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRelativeActionPerformed
+        // TODO add your handling code here:
+        RelativeAddForm relativeAddFormWindow = new RelativeAddForm(serviceManager, patientId);
+        relativeAddFormWindow.setVisible(true);
+        relativeAddFormWindow.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAddRelativeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel address;
     private javax.swing.JLabel birthday;
+    private javax.swing.JButton btnAddRelative;
+    private javax.swing.JButton btnDltRelative;
+    private javax.swing.JButton btnEditRelative;
     private javax.swing.JLabel city;
     private javax.swing.JLabel country;
     private javax.swing.JLabel derivedFrom;

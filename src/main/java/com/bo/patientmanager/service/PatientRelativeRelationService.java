@@ -5,6 +5,7 @@
 package com.bo.patientmanager.service;
 
 import com.bo.patientmanager.model.PatientRelativeRelation;
+import com.bo.patientmanager.model.RelativeObservation;
 import com.bo.patientmanager.model.Session;
 import com.bo.patientmanager.repository.PatientRelativeRelationRepository;
 import jakarta.persistence.EntityManagerFactory;

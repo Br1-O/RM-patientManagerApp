@@ -39,4 +39,8 @@ public class RelativeObservationService {
     public List<RelativeObservation> findByRelation(Long relationId){
         return relativeObservationRepository.findByRelation(relationId);
     }
+
+    public List<RelativeObservation> findByPatientRelativeRelation(Long patientRelativeRelationId) {
+        return relativeObservationRepository.findByPatientRelativeRelationId(patientRelativeRelationId);
+    }
 }

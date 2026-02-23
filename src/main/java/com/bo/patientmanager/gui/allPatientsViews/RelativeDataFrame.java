@@ -16,7 +16,7 @@ import javax.swing.DefaultListModel;
  *
  * @author Bring Online
  */
-public class RelativeFrame extends javax.swing.JFrame {
+public class RelativeDataFrame extends javax.swing.JFrame {
     
     private Long relationId = null;
     PatientRelativeRelationService patientRelativeRelationService = null;
@@ -25,7 +25,7 @@ public class RelativeFrame extends javax.swing.JFrame {
     /**
      * Creates new form FamiliarFrame
      */
-    public RelativeFrame(ServiceManager serviceManager, Long relationId) {
+    public RelativeDataFrame(ServiceManager serviceManager, Long relationId) {
         initComponents();
         
         this.relationId = relationId;
@@ -65,6 +65,19 @@ public class RelativeFrame extends javax.swing.JFrame {
             obsModel.addElement(o);
         }
     }
+    /**
+        private void loadObservations(Patient patient){
+
+        observationsModel.clear();        
+        // --- Observaciones
+        List<RelativeObservation> allObservationsData = serviceManager.getRelativeObservationService().findByPatientRelativeRelation(patient.getPatientId());
+
+        for(RelativeObservation observation : allObservationsData){
+            observationsModel.addElement(observation);
+        }
+    };
+    * **/
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -288,9 +301,8 @@ public class RelativeFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                .addGap(78, 78, 78)
+                .addGap(140, 140, 140)
                 .addComponent(derivedTo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
