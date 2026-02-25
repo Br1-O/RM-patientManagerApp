@@ -120,6 +120,9 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstObservations = new javax.swing.JList<>();
+        btnAddObservation = new javax.swing.JButton();
+        btnEditObservation = new javax.swing.JButton();
+        btnDltObservation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -285,7 +288,37 @@ public class RelativeDataFrame extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(lstObservations);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 320, 260));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 380, 260));
+
+        btnAddObservation.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btnAddObservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/add (1).png"))); // NOI18N
+        btnAddObservation.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAddObservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddObservationActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnAddObservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, -1));
+
+        btnEditObservation.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btnEditObservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/edit.png"))); // NOI18N
+        btnEditObservation.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnEditObservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditObservationActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnEditObservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, -1));
+
+        btnDltObservation.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        btnDltObservation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/icons/remove.png"))); // NOI18N
+        btnDltObservation.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDltObservation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDltObservationActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnDltObservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -299,8 +332,8 @@ public class RelativeDataFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(derivedTo)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(386, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,11 +356,31 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
 
+    private void btnAddObservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddObservationActionPerformed
+        // TODO add your handling code here:
+        PatientRelativeRelation rel = patientRelativeRelationService.findById(relationId);
+
+        ObservationAddForm observationAddFormWindow = new ObservationAddForm(relativeObservationService, rel);
+        observationAddFormWindow.setVisible(true);
+        observationAddFormWindow.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAddObservationActionPerformed
+
+    private void btnEditObservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditObservationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditObservationActionPerformed
+
+    private void btnDltObservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDltObservationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDltObservationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel address;
     private javax.swing.JLabel age;
     private javax.swing.JLabel birthday;
+    private javax.swing.JButton btnAddObservation;
+    private javax.swing.JButton btnDltObservation;
+    private javax.swing.JButton btnEditObservation;
     private javax.swing.JLabel city;
     private javax.swing.JLabel country;
     private javax.swing.JLabel derivedFrom;
