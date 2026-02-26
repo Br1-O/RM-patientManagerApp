@@ -4,11 +4,14 @@
  */
 package com.bo.patientmanager.gui.allPatientsViews;
 
+import com.bo.patientmanager.gui.HomePane;
+import com.bo.patientmanager.gui.component.BackgroundPanel;
 import com.bo.patientmanager.model.PatientRelativeRelation;
 import com.bo.patientmanager.model.RelativeObservation;
 import com.bo.patientmanager.service.PatientRelativeRelationService;
 import com.bo.patientmanager.service.RelativeObservationService;
 import com.bo.patientmanager.service.ServiceManager;
+import java.awt.BorderLayout;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -27,6 +30,8 @@ public class RelativeDataFrame extends javax.swing.JFrame {
      */
     public RelativeDataFrame(ServiceManager serviceManager, Long relationId) {
         initComponents();
+        
+        BackgroundPanel.setDefaultView(content, view);
         
         this.relationId = relationId;
         patientRelativeRelationService = serviceManager.getPatientRelativeRelationService();
@@ -86,6 +91,8 @@ public class RelativeDataFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        view = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lastName = new javax.swing.JLabel();
         birthday = new javax.swing.JLabel();
@@ -106,7 +113,6 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
-        derivedTo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         socials = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
@@ -123,6 +129,18 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         btnAddObservation = new javax.swing.JButton();
         btnEditObservation = new javax.swing.JButton();
         btnDltObservation = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -130,6 +148,7 @@ public class RelativeDataFrame extends javax.swing.JFrame {
                 formWindowClosed(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(61, 25, 119));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -231,10 +250,6 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         jLabel31.setText("País");
         jPanel1.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
 
-        derivedTo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        derivedTo.setForeground(new java.awt.Color(255, 255, 255));
-        derivedTo.setText("Derivado a:");
-
         jPanel2.setBackground(new java.awt.Color(61, 25, 119));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -320,34 +335,48 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         });
         jPanel4.add(btnDltObservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(derivedTo)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(303, Short.MAX_VALUE))
+        javax.swing.GroupLayout viewLayout = new javax.swing.GroupLayout(view);
+        view.setLayout(viewLayout);
+        viewLayout.setHorizontalGroup(
+            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE)
-                .addGap(140, 140, 140)
-                .addComponent(derivedTo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+        viewLayout.setVerticalGroup(
+            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(viewLayout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(viewLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
+
+        getContentPane().add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 720));
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1140, Short.MAX_VALUE)
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 1140, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -382,9 +411,9 @@ public class RelativeDataFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDltObservation;
     private javax.swing.JButton btnEditObservation;
     private javax.swing.JLabel city;
+    private javax.swing.JPanel content;
     private javax.swing.JLabel country;
     private javax.swing.JLabel derivedFrom;
-    private javax.swing.JLabel derivedTo;
     private javax.swing.JLabel email;
     private javax.swing.JLabel gender;
     private javax.swing.JLabel jLabel11;
@@ -403,6 +432,7 @@ public class RelativeDataFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lastName;
@@ -412,5 +442,6 @@ public class RelativeDataFrame extends javax.swing.JFrame {
     private javax.swing.JLabel phone2;
     private javax.swing.JLabel socials;
     private javax.swing.JLabel state;
+    private javax.swing.JPanel view;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,5 +39,15 @@ public class BackgroundPanel extends JPanel {
         revalidate();
         repaint();
     }
+     
+     public static void setDefaultView(JPanel container, JPanel view){
+        container.removeAll();
+        container.setLayout(new BorderLayout());
+        BackgroundPanel bgContent = new BackgroundPanel("/public/bg/bg_nodes.jpg");
+        bgContent.setLayout(new BorderLayout());
+        container.add(bgContent, BorderLayout.CENTER);
+        view.setOpaque(false);
+        bgContent.setView(view);
+     }
 
 }

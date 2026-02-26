@@ -4,6 +4,7 @@
  */
 package com.bo.patientmanager.gui.allPatientsViews;
 
+import com.bo.patientmanager.gui.component.BackgroundPanel;
 import com.bo.patientmanager.gui.component.CustomMessageDialog;
 import com.bo.patientmanager.model.Patient;
 import com.bo.patientmanager.model.PatientRelativeRelation;
@@ -44,6 +45,8 @@ public class RelativeAddForm extends javax.swing.JFrame {
     public RelativeAddForm(ServiceManager serviceManager, Long patientId, Consumer<Patient> onSaveCallback) {
         initComponents();
         
+        BackgroundPanel.setDefaultView(content, view);
+        
         dtBirthday = new JDateChooser();
         dtBirthday.setDateFormatString("dd/MM/yyyy");
 
@@ -64,7 +67,7 @@ public class RelativeAddForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        view = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -98,10 +101,10 @@ public class RelativeAddForm extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtObservations = new javax.swing.JTextArea();
+        content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(61, 25, 119));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -193,8 +196,6 @@ public class RelativeAddForm extends javax.swing.JFrame {
                     .addComponent(ckbxIsMainContact))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 720, 180));
 
         jPanel2.setBackground(new java.awt.Color(61, 25, 119));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -361,8 +362,6 @@ public class RelativeAddForm extends javax.swing.JFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 332, 420));
-
         btnClearForm.setBackground(new java.awt.Color(61, 25, 119));
         btnClearForm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnClearForm.setForeground(new java.awt.Color(255, 255, 255));
@@ -373,7 +372,6 @@ public class RelativeAddForm extends javax.swing.JFrame {
                 btnClearFormActionPerformed(evt);
             }
         });
-        jPanel1.add(btnClearForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 630, 140, 56));
 
         btnSaveNewForm.setBackground(new java.awt.Color(61, 25, 119));
         btnSaveNewForm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -385,7 +383,6 @@ public class RelativeAddForm extends javax.swing.JFrame {
                 btnSaveNewFormActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSaveNewForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 630, 140, 56));
 
         jPanel6.setBackground(new java.awt.Color(61, 25, 119));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -420,18 +417,46 @@ public class RelativeAddForm extends javax.swing.JFrame {
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 340, 390));
+        javax.swing.GroupLayout viewLayout = new javax.swing.GroupLayout(view);
+        view.setLayout(viewLayout);
+        viewLayout.setHorizontalGroup(
+            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewLayout.createSequentialGroup()
+                .addGap(197, 197, 197)
+                .addComponent(btnClearForm, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(134, 134, 134)
+                .addComponent(btnSaveNewForm, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(viewLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(viewLayout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 76, Short.MAX_VALUE))
+        );
+        viewLayout.setVerticalGroup(
+            viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewLayout.createSequentialGroup()
+                .addGap(0, 7, Short.MAX_VALUE)
+                .addGroup(viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(viewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSaveNewForm, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClearForm, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 7, Short.MAX_VALUE))
+        );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 795, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 690));
+
+        content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -585,6 +610,7 @@ public class RelativeAddForm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbCountry;
     private javax.swing.JComboBox<String> cmbGender;
     private javax.swing.JComboBox<String> cmbRelation;
+    private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -599,7 +625,6 @@ public class RelativeAddForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
@@ -613,5 +638,6 @@ public class RelativeAddForm extends javax.swing.JFrame {
     private javax.swing.JTextArea txtObservations;
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtPhone2;
+    private javax.swing.JPanel view;
     // End of variables declaration//GEN-END:variables
 }
