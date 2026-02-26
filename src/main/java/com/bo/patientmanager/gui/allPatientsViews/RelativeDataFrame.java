@@ -360,7 +360,7 @@ public class RelativeDataFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         PatientRelativeRelation rel = patientRelativeRelationService.findById(relationId);
 
-        ObservationAddForm observationAddFormWindow = new ObservationAddForm(relativeObservationService, rel);
+        ObservationAddForm observationAddFormWindow = new ObservationAddForm(relativeObservationService, rel, this::loadObservations);
         observationAddFormWindow.setVisible(true);
         observationAddFormWindow.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAddObservationActionPerformed

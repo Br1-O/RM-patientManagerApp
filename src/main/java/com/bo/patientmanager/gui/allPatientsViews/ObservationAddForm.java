@@ -4,12 +4,15 @@
  */
 package com.bo.patientmanager.gui.allPatientsViews;
 
+import com.bo.patientmanager.gui.component.CustomMessageDialog;
 import com.bo.patientmanager.model.PatientRelativeRelation;
 import com.bo.patientmanager.model.RelativeObservation;
 import com.bo.patientmanager.service.RelativeObservationService;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.UIManager;
 
 /**
  *
@@ -19,15 +22,17 @@ public class ObservationAddForm extends javax.swing.JFrame {
     
     RelativeObservationService relativeObservationService = null;
     PatientRelativeRelation patientRelativeRelation = null;
+    Runnable onSavedCallback = null;
 
     /**
      * Creates new form ObservationAddForm
      */
-    public ObservationAddForm(RelativeObservationService relativeObservationService, PatientRelativeRelation patientRelativeRelation) {
+    public ObservationAddForm(RelativeObservationService relativeObservationService, PatientRelativeRelation patientRelativeRelation, Runnable onSavedCallback) {
         initComponents();
         
         this.relativeObservationService = relativeObservationService;
         this.patientRelativeRelation = patientRelativeRelation;
+        this.onSavedCallback = onSavedCallback;
     }
 
     /**
@@ -47,7 +52,7 @@ public class ObservationAddForm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtObservations = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnClearForm.setBackground(new java.awt.Color(61, 25, 119));
         btnClearForm.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -165,18 +170,18 @@ public class ObservationAddForm extends javax.swing.JFrame {
                 currentDate,
                 observationsData
             );
-
-            newObservationsData.add(newObservation);
-
-            patientRelativeRelation.setObservations(newObservationsData);
-
+            
             // ---Create into db
-            serviceManager.getPatientRelativeRelationService().create(patientRelativeRelation);
-            serviceManager.getRelativeObservationService().create(newObservation);
+            relativeObservationService.create(newObservation);
+            
+            if(onSavedCallback != null){
+                onSavedCallback.run();
+            }
+
 
             CustomMessageDialog.show(
                 this,
-                "Familiar de paciente guardado correctamente",
+                "Observación de familiar guardado correctamente",
                 UIManager.getIcon("OptionPane.informationIcon"),
                 new Color(46, 204, 113),
                 Color.WHITE,
@@ -184,9 +189,12 @@ public class ObservationAddForm extends javax.swing.JFrame {
                 2000,
                 CustomMessageDialog.Position.DOWN_RIGHT
             );
+            
+            this.dispose();
+            
         }
         catch(Exception err){
-            System.out.println("Familiar no guardado");
+            System.out.println("Observación de Familiar no guardado");
         }
     }//GEN-LAST:event_btnSaveNewFormActionPerformed
 
@@ -194,30 +202,10 @@ public class ObservationAddForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClearForm;
     private javax.swing.JButton btnSaveNewForm;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
     private javax.swing.JTextArea txtObservations;
     // End of variables declaration//GEN-END:variables
 }
