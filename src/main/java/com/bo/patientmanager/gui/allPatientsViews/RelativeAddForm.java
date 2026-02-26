@@ -19,6 +19,7 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 import javax.swing.UIManager;
 
 /**
@@ -34,11 +35,13 @@ public class RelativeAddForm extends javax.swing.JFrame {
     List<RelativeObservation> observations;
     
     private DefaultListModel<RelativeObservation> observationsModel;
+    
+    private Consumer<Patient> onSaveCallback = null;
 
     /**
      * Creates new form RelativeAddForm
      */
-    public RelativeAddForm(ServiceManager serviceManager, Long patientId) {
+    public RelativeAddForm(ServiceManager serviceManager, Long patientId, Consumer<Patient> onSaveCallback) {
         initComponents();
         
         dtBirthday = new JDateChooser();
@@ -49,6 +52,7 @@ public class RelativeAddForm extends javax.swing.JFrame {
         
         this.serviceManager = serviceManager;
         this.patientId = patientId;
+        this.onSaveCallback = onSaveCallback;
     }
 
     /**
@@ -543,6 +547,14 @@ public class RelativeAddForm extends javax.swing.JFrame {
             serviceManager.getRelativeService().create(newRelative);
             serviceManager.getPatientRelativeRelationService().create(patientRelativeRelation);
             serviceManager.getRelativeObservationService().create(newObservation);
+            
+            // ---Refresh relatives list
+            if(this.onSaveCallback != null){
+                this.onSaveCallback.accept(patient);
+            }
+            
+            // ---Close window form
+            this.dispose();
 
             CustomMessageDialog.show(
                 this,

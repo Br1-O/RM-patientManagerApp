@@ -710,7 +710,7 @@ public class PatientDataPane extends javax.swing.JPanel {
 
     private void btnAddRelativeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRelativeActionPerformed
         // TODO add your handling code here:
-        RelativeAddForm relativeAddFormWindow = new RelativeAddForm(serviceManager, patientId);
+        RelativeAddForm relativeAddFormWindow = new RelativeAddForm(serviceManager, patientId, this::loadRelatives);
         relativeAddFormWindow.setVisible(true);
         relativeAddFormWindow.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAddRelativeActionPerformed
