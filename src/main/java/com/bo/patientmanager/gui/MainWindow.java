@@ -6,6 +6,9 @@ package com.bo.patientmanager.gui;
 
 import com.bo.patientmanager.gui.allPatientsViews.SeeAllPatientsPane;
 import com.bo.patientmanager.gui.component.BackgroundPanel;
+import com.bo.patientmanager.gui.theme.AppTheme;
+import com.bo.patientmanager.gui.theme.ThemeManager;
+import com.bo.patientmanager.gui.theme.ThemePickerPane;
 import com.bo.patientmanager.service.ServiceManager;
 import jakarta.persistence.EntityManagerFactory;
 import java.awt.BorderLayout;
@@ -29,16 +32,18 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         
+        ThemeManager.setTheme(AppTheme.CLASSIC);
+
         initComponents();
 
         content.removeAll();
         content.setLayout(new BorderLayout());
 
-        bgContent = new BackgroundPanel("/public/bg/bg_nodes.jpg");
+        bgContent = new BackgroundPanel();
         bgContent.setLayout(new BorderLayout());
 
         content.add(bgContent, BorderLayout.CENTER);
-        
+
         bgContent.setView(new HomePane());
     }
 
@@ -183,6 +188,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnLoadNewClinicHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadNewClinicHistoryActionPerformed
         // TODO add your handling code here:
+        bgContent.setView(new ThemePickerPane());
     }//GEN-LAST:event_btnLoadNewClinicHistoryActionPerformed
 
     private void btnLoadNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadNewPatientActionPerformed

@@ -4,9 +4,12 @@
  */
 package com.bo.patientmanager.gui.component;
 
+import com.bo.patientmanager.gui.theme.ThemeManager;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -16,11 +19,25 @@ import javax.swing.JPanel;
  */
 public class BackgroundPanel extends JPanel {
 
+
     private Image bg;
 
-    public BackgroundPanel(String resourcePath) {
+    public BackgroundPanel() {
+
+        loadBackground();
+
+        ThemeManager.addThemeListener(() -> {
+            loadBackground();
+            repaint();
+        });
+    }
+
+    private void loadBackground(){
+
+        String path = ThemeManager.background();
+
         bg = new ImageIcon(
-            getClass().getResource(resourcePath)
+                getClass().getResource(path)
         ).getImage();
     }
 
@@ -28,26 +45,35 @@ public class BackgroundPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
+        if(bg != null){
+            g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
+        }
     }
-    
-     public void setView(JPanel view) {
+
+    public void setView(JPanel view){
 
         removeAll();
+        setLayout(new BorderLayout());
+
+        view.setOpaque(false);
         add(view, BorderLayout.CENTER);
 
         revalidate();
         repaint();
     }
-     
-     public static void setDefaultView(JPanel container, JPanel view){
+
+    // helper para tus ventanas
+
+    public static void setDefaultView(JPanel container, JPanel view){
+
         container.removeAll();
         container.setLayout(new BorderLayout());
-        BackgroundPanel bgContent = new BackgroundPanel("/public/bg/bg_nodes.jpg");
-        bgContent.setLayout(new BorderLayout());
-        container.add(bgContent, BorderLayout.CENTER);
-        view.setOpaque(false);
-        bgContent.setView(view);
-     }
+
+        BackgroundPanel bg = new BackgroundPanel();
+        bg.setLayout(new BorderLayout());
+
+        container.add(bg, BorderLayout.CENTER);
+        bg.setView(view);
+    }
 
 }

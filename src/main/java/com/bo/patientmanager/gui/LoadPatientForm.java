@@ -40,6 +40,9 @@ public class LoadPatientForm extends javax.swing.JPanel {
     public LoadPatientForm(ServiceManager serviceManager) {
         initComponents();
         
+        this.setOpaque(false);
+        bg.setOpaque(false);
+        
         dtPatientBirthday = new JDateChooser();
         dtPatientBirthday.setDateFormatString("dd/MM/yyyy");
 
@@ -59,7 +62,7 @@ public class LoadPatientForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg =  new BackgroundPanel("/public/bg/bg_nodes.jpg");
+        bg = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();

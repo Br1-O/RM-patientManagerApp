@@ -1,5 +1,6 @@
 com\bo\patientmanager\gui\LoadPatientForm$15.class
 com\bo\patientmanager\gui\MainWindow.class
+com\bo\patientmanager\gui\theme\ThemePickerPane.class
 com\bo\patientmanager\gui\MainWindow$1.class
 com\bo\patientmanager\gui\allPatientsViews\SeeAllPatientsPane$3.class
 com\bo\patientmanager\repository\RelativeObservationRepository.class
@@ -50,6 +51,7 @@ com\bo\patientmanager\gui\LoadPatientForm$3.class
 com\bo\patientmanager\model\ClinicalHistory.class
 com\bo\patientmanager\gui\allPatientsViews\PatientDataPane$4.class
 com\bo\patientmanager\gui\allPatientsViews\PatientDataPane.class
+com\bo\patientmanager\gui\theme\ThemePickerPane$1.class
 com\bo\patientmanager\gui\LoadPatientForm$6.class
 com\bo\patientmanager\gui\allPatientsViews\RelativeDataFrame$4.class
 com\bo\patientmanager\model\Patient.class
@@ -68,6 +70,7 @@ com\bo\patientmanager\PatientManager.class
 com\bo\patientmanager\service\RelativeService.class
 com\bo\patientmanager\gui\allPatientsViews\SeeAllPatientsPane$5.class
 com\bo\patientmanager\model\Patient$State.class
+com\bo\patientmanager\gui\theme\ThemePickerPane$2.class
 com\bo\patientmanager\gui\LoadPatientForm$5.class
 com\bo\patientmanager\repository\ClinicalHistoryRepository.class
 com\bo\patientmanager\gui\LoadPatientForm$13.class
@@ -78,8 +81,10 @@ com\bo\patientmanager\gui\LoadPatientForm$9.class
 com\bo\patientmanager\gui\allPatientsViews\PatientDataPane$2.class
 com\bo\patientmanager\gui\MainWindow$3.class
 com\bo\patientmanager\gui\component\CustomMessageDialog.class
+com\bo\patientmanager\gui\theme\ThemeManager.class
 com\bo\patientmanager\gui\allPatientsViews\RelativeAddForm$7.class
 utils\time\ModelMapper.class
+com\bo\patientmanager\gui\theme\AppTheme.class
 com\bo\patientmanager\gui\allPatientsViews\SeeAllPatientsPane$4.class
 com\bo\patientmanager\service\PatientService.class
 utils\time\DateMapper$1.class
