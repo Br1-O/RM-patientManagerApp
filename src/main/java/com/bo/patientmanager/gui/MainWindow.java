@@ -39,12 +39,25 @@ public class MainWindow extends javax.swing.JFrame {
         content.removeAll();
         content.setLayout(new BorderLayout());
 
-        bgContent = new BackgroundPanel();
+        bgContent = new BackgroundPanel();   // <<< ESTA LÍNEA FALTABA
         bgContent.setLayout(new BorderLayout());
 
         content.add(bgContent, BorderLayout.CENTER);
 
         bgContent.setView(new HomePane());
+
+        mainBg.remove(menuBg);
+        
+        menuBg.setOpaque(false);
+
+        BackgroundPanel menuBackground = new BackgroundPanel(true);
+        menuBackground.setLayout(new BorderLayout());
+        menuBackground.add(menuBg, BorderLayout.CENTER);
+
+        mainBg.add(
+            menuBackground,
+            new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100)
+        );
     }
 
     /**
@@ -64,8 +77,6 @@ public class MainWindow extends javax.swing.JFrame {
         btnLoadNewPatient = new javax.swing.JButton();
         btnLoadNewClinicHistory = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
 
@@ -150,13 +161,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
         menuBg.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 20, 140, 56));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/public/bg/bg_nodes_menu.jpg"))); // NOI18N
-        menuBg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
-
         mainBg.add(menuBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 100));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Documentos\\Downloads\\33114809_rm251-mind-15-e3.jpg")); // NOI18N
-        mainBg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 100));
 
         content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -222,8 +227,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchClinicHistory;
     private javax.swing.JButton btnSearchPatient;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel mainBg;
     private javax.swing.JPanel menuBg;
     private javax.swing.JLabel title;

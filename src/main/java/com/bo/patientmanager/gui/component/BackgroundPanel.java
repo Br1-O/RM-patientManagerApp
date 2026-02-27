@@ -21,8 +21,21 @@ public class BackgroundPanel extends JPanel {
 
 
     private Image bg;
+    
+    private boolean useMenuBackground = false;
 
     public BackgroundPanel() {
+
+        loadBackground();
+
+        ThemeManager.addThemeListener(() -> {
+            loadBackground();
+            repaint();
+        });
+    }
+    
+    public BackgroundPanel(boolean useMenuBackground) {
+        this.useMenuBackground = useMenuBackground;
 
         loadBackground();
 
@@ -34,7 +47,7 @@ public class BackgroundPanel extends JPanel {
 
     private void loadBackground(){
 
-        String path = ThemeManager.background();
+        String path = useMenuBackground ? ThemeManager.menuBackground() : ThemeManager.background();
 
         bg = new ImageIcon(
                 getClass().getResource(path)

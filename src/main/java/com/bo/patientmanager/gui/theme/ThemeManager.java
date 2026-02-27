@@ -85,5 +85,9 @@ public final class ThemeManager {
     public static String background(){
         return current.background;
     }
+    
+    public static String menuBackground(){
+        return current.menuBg;
+    }
 
 }
